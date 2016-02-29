@@ -23,7 +23,7 @@ gulp.task('views',['inject'], function () {
 gulp.task('js',['clean'], function () {
     console.log('javascripting it all up');
     // grab any js files and minify into one file
-    gulp.src(['./src/js/*.js','./src/js/**/*.js']) // path to your files
+    gulp.src(['./src/js/*.js','./src/js/**/*.js','./src/js/**/**/*.js']) // path to your files
     .pipe(uglify())
     //.pipe(concat('scripts.js'))
     .pipe(gulp.dest('dist/js'));
@@ -73,3 +73,5 @@ gulp.task('clean',function(){
 gulp.task('default',['index','views'],function(){
     
 });
+
+// gulp.task('debug',[''],function(){});
