@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 // ADD HTML TO BUILD
 gulp.task('index',['inject'], function () {
     console.log('building index');
-    gulp.src('./src/*.html') // path to your files
+    gulp.src('src/index.html') // path to your files
     .pipe(gulp.dest('dist'));
 });
 
@@ -23,9 +23,9 @@ gulp.task('views',['inject'], function () {
 gulp.task('js',['clean'], function () {
     console.log('javascripting it all up');
     // grab any js files and minify into one file
-    gulp.src(['./src/js/*.js','./src/js/**/*.js','./src/js/**/**/*.js']) // path to your files
+    gulp.src(['./src/js/**/*.js']) // path to your files
     .pipe(uglify())
-    //.pipe(concat('scripts.js'))
+    .pipe(concat('scripts.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -58,7 +58,7 @@ gulp.task('css',['clean'], function () {
 // INSULIN ACTIVATE
 gulp.task('inject',['jquery','js','css','sass'], function () {
   gulp.src('./src/index.html')
-    .pipe(inject(gulp.src(['./src/js/*js','./src/css/*.css'], {read: false}),{ignorePath: 'src'}))
+    .pipe(inject(gulp.src(['./src/js/*.js','./src/css/*.css'], {read: false}),{ignorePath: 'src'}))
     .pipe(gulp.dest('./dist'));
 });
 

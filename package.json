@@ -13,11 +13,6 @@
     "angular-resource": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6",
-    "gulp": "^3.9.1",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-debug": "^2.1.2",
-    "gulp-sass": "^2.2.0",
-    "gulp-webserver": "^0.9.1",
     "jquery": "^2.2.0"
   },
   "devDependencies": {
@@ -29,6 +24,11 @@
     "gulp-minify": "0.0.5",
     "gulp-uglify": "^1.5.2",
     "gulp-watch": "^4.3.5",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-debug": "^2.1.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-webserver": "^0.9.1",
     "method-override": "^2.3.5"
   }
 }

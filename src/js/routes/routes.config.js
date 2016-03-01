@@ -7,13 +7,21 @@
     RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
     function RouteConfig($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/contexts");
 
         $stateProvider
-            .state('page', {
-                url: "/page",
-                templateUrl: "views/page.html"
-            });
+            .state('main', {
+                abstract: true,
+                templateUrl: 'partials/main-template.html'
+            })
+            .state('main.contexts', {
+                url: '/contexts',
+                template: "main.contexts"
+            })
+            .state('main.contextDetail', {
+                url: "/contexts/{id}",
+                template: "main.contextDetail"
+            })
     }
 
 }());
