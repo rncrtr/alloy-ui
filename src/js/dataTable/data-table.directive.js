@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('directives')
-      .directive('dataTable',dataTable);
+      .directive('gridTable',dataTable);
     
     function dataTable() {
       var directive = {

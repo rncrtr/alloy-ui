@@ -17,11 +17,16 @@ npm i
 ```
 gulp
 ```
-This will take all the files in src/ and build them into dist, linking them to the index.html for you.This
+This will take all the files in src/ and build them into dist, linking them to the index.html for you.
+
+## To watch files for changes and automatically rebuild when changes are saved:
+```
+gulp watch
+```
 
 ## To start the app for viewing in the browser, type:
 ```
-node server.js
+gulp serve
 ```
 This will run whatever is in dist.
 

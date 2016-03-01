@@ -1,77 +1,98 @@
-var gulp = require('gulp'),
-    inject = require('gulp-inject'),
-    uglify = require('gulp-uglify'),
-    sass = require("gulp-sass"),
-    cssmin = require('gulp-cssmin'),
-    clean = require('gulp-clean'),
-    concat = require('gulp-concat');
+var gulp       = require('gulp'),
+    _          = require('lodash'),
+    fs         = require('fs'),
+    nodemon    = require('gulp-nodemon'),
+    ini        = require('ini'),
+    config     = ini.parse(fs.readFileSync('./.env', 'utf-8')),
+    concat     = require('gulp-concat'),
+    uglify     = require('gulp-uglify'),
+    htmlMin    = require('gulp-minify-html'),
+    browserify = require('gulp-browserify'),
+    clean      = require('gulp-clean'),
+    watch      = require('gulp-watch'),
+    ngHtml2Js  = require('gulp-ng-html2js'),
+    cssmin     = require('gulp-cssmin');
 
-// ADD HTML TO BUILD
-gulp.task('index',['inject'], function () {
-    console.log('building index');
-    gulp.src('./src/*.html') // path to your files
-    .pipe(gulp.dest('dist'));
+gulp.task('serve', function(){
+    // Update process.env with our .env values
+    _.assign(process.env, config);
+    nodemon({
+        script: 'server.js',
+        options: '-e html,js -w lib'
+    });
 });
 
-gulp.task('views',['inject'], function () {
-    console.log('building views');
-    gulp.src('./src/views/*.html') // path to your files
-    .pipe(gulp.dest('dist/views'));
-});
-
-// MINIFY JS
-gulp.task('js',['clean'], function () {
-    console.log('javascripting it all up');
-    // grab any js files and minify into one file
-    gulp.src(['./src/js/*.js','./src/js/**/*.js','./src/js/**/**/*.js']) // path to your files
-    .pipe(uglify())
-    //.pipe(concat('scripts.js'))
-    .pipe(gulp.dest('dist/js'));
-});
-
-// JQUERY IS ADDED SEPARATELY SO IT IS LOADED FIRST
-gulp.task('jquery',['clean'],function(){
-    //copy jquery fresh to the dist folder since we're adding it manually 
-    console.log('adding jquery');
-    gulp.src('./node_modules/jquery/dist/jquery.min.js') // path to your files
-        .pipe(gulp.dest('dist/js'));
-});
-
-// SASSY
-gulp.task('sass',['clean'], function () {
-    console.log('sassy-frassing');
-    // this converts all sass into css and adds it to the SRC folder for injection like regular css
-    gulp.src('./src/sass/*.scss') // path to your file
-    .pipe(sass())
-    .pipe(gulp.dest('src/css'));
-});
-
-// EWWWW, DIRTY CSSpools!
-gulp.task('css',['clean'], function () {
-    //minify the css for injection
-    console.log('css styling the place up');
-    gulp.src('./src/css/*.css') // path to your file
-    .pipe(cssmin())
-    .pipe(gulp.dest('dist/css'));
-});
-
-// INSULIN ACTIVATE
-gulp.task('inject',['jquery','js','css','sass'], function () {
-  gulp.src('./src/index.html')
-    .pipe(inject(gulp.src(['./src/js/*js','./src/css/*.css'], {read: false}),{ignorePath: 'src'}))
-    .pipe(gulp.dest('./dist'));
-});
-
-// DELETE DELETE. CYBERMEN WERE HERE.
-gulp.task('clean',function(){
-    console.log('cleaning out the old stuff');
+gulp.task('clean', function(cb) {
     return gulp.src('dist', {read: false})
-      .pipe(clean());
+        .pipe(clean());
 });
 
-// main task to kickoff the others
-gulp.task('default',['index','views'],function(){
-    
+gulp.task('ng', ['clean'], function() {
+    buildTemplates("./src/js/**/*.html", "templates.min.js", "./dist/js/");
 });
 
-// gulp.task('debug',[''],function(){});
+gulp.task('css', ['clean'], function() {
+    buildCss('./src/css/**/*.css', 'dist/css');
+});
+
+gulp.task('copy', ['clean'], function() {
+    copyIndex();
+});
+
+gulp.task('bundle', ['clean'], function() {
+    buildAppJs('./src/js/app.js', './dist/js');
+});
+
+gulp.task('build', ['ng', 'css', 'bundle', 'copy']);
+
+gulp.task('watch', ['build'], function() {
+    gulp.src('./src/**/*.*')
+        .pipe(watch('./src/**/*.*', function(files) {
+            console.log('Rebuilding...')
+            buildAppJs('./src/js/app.js', './dist/js');
+            buildCss('./src/css/**/*.css', 'dist/css');
+            buildTemplates("./src/js/**//*.html", "templates.min.js", "./dist/js/");
+            copyIndex();
+        }));
+});
+
+gulp.task('default', ['build']);
+
+function buildCss(src, dest) {
+    return gulp.src(src)
+        .pipe(concat('styles.css'))
+        //.pipe(cssmin())
+        .pipe(gulp.dest(dest));
+}
+
+function copyIndex() {
+    return gulp.src('./src/index.html')
+        /*.pipe(htmlMin({
+            empty: true,
+            spare: true,
+            quotes: true
+        }))*/
+        .pipe(gulp.dest('./dist/'));
+}
+
+function buildAppJs(files, outfile) {
+    return gulp.src(files)
+        .pipe(browserify())
+        //.pipe(uglify())
+        .pipe(gulp.dest(outfile));
+}
+
+function buildTemplates(src, file, dest) {
+    return gulp.src(src)
+        .pipe(htmlMin({
+            empty: true,
+            spare: true,
+            quotes: true
+        }))
+        .pipe(ngHtml2Js({
+            moduleName: "templates"
+        }))
+        .pipe(concat(file))
+        .pipe(uglify())
+        .pipe(gulp.dest(dest));
+}
