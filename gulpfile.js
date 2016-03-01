@@ -13,7 +13,7 @@ var gulp       = require('gulp'),
     ngHtml2Js  = require('gulp-ng-html2js'),
     cssmin     = require('gulp-cssmin');
 
-gulp.task('default', function(){
+gulp.task('serve', function(){
     // Update process.env with our .env values
     _.assign(process.env, config);
     nodemon({
@@ -55,6 +55,8 @@ gulp.task('watch', ['build'], function() {
             copyIndex();
         }));
 });
+
+gulp.task('default', ['build']);
 
 function buildCss(src, dest) {
     return gulp.src(src)
