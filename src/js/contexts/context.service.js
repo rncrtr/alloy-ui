@@ -1,6 +1,3 @@
-angular
-    .module('app')
-    .factory('contextService', contextService);
 
 function contextService(){
   var url = '';
@@ -31,3 +28,5 @@ function contextService(){
     return defer.promise;
   };
 }
+
+module.exports = contextService;

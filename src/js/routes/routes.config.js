@@ -1,27 +1,23 @@
-(function() {
-   'use strict';
+'use strict';
 
-    angular.module('routes')
-        .config(RouteConfig);
+RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+function RouteConfig($stateProvider, $urlRouterProvider) {
 
-    RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-    function RouteConfig($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/contexts");
 
-        $urlRouterProvider.otherwise("/contexts");
+    $stateProvider
+        .state('main', {
+            abstract: true,
+            templateUrl: 'partials/main-template.html'
+        })
+        .state('main.contexts', {
+            url: '/contexts',
+            templateUrl: "contexts/contextList/context-list-view.html"
+        })
+        .state('main.contextDetail', {
+            url: "/contexts/{id}",
+            templateUrl: "contexts/contextDetail/context-detail-view.html"
+        })
+}
 
-        $stateProvider
-            .state('main', {
-                abstract: true,
-                templateUrl: 'partials/main-template.html'
-            })
-            .state('main.contexts', {
-                url: '/contexts',
-                template: "main.contexts"
-            })
-            .state('main.contextDetail', {
-                url: "/contexts/{id}",
-                template: "main.contextDetail"
-            })
-    }
-
-}());
+module.exports = RouteConfig;
