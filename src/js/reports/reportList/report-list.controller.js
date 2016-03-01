@@ -3,7 +3,7 @@
 
     angular.module('reports')
 
-        .controller(ReportListController);
+        .controller('ReportListController',ReportListController);
 
     ReportListController.$inject = [];
     function ReportListController() {
