@@ -11,7 +11,9 @@ var gulp       = require('gulp'),
     clean      = require('gulp-clean'),
     watch      = require('gulp-watch'),
     ngHtml2Js  = require('gulp-ng-html2js'),
-    cssmin     = require('gulp-cssmin');
+    cssmin     = require('gulp-cssmin'),
+    sass       = require("gulp-sass"),
+    es         = require('event-stream');
 
 gulp.task('serve', function(){
     // Update process.env with our .env values
@@ -32,7 +34,7 @@ gulp.task('ng', ['clean'], function() {
 });
 
 gulp.task('css', ['clean'], function() {
-    buildCss('./src/css/**/*.css', 'dist/css');
+    buildCss('./src/css/**/*.css', './src/sass/**/*.scss', 'dist/css');
 });
 
 gulp.task('copy', ['clean'], function() {
@@ -50,7 +52,7 @@ gulp.task('watch', ['build'], function() {
         .pipe(watch('./src/**/*.*', function(files) {
             console.log('Rebuilding...')
             buildAppJs('./src/js/app.js', './dist/js');
-            buildCss('./src/css/**/*.css', 'dist/css');
+            buildCss('./src/css/**/*.css', './src/sass/**/*.scss', 'dist/css');
             buildTemplates("./src/js/**//*.html", "templates.min.js", "./dist/js/");
             copyIndex();
         }));
@@ -58,8 +60,8 @@ gulp.task('watch', ['build'], function() {
 
 gulp.task('default', ['build']);
 
-function buildCss(src, dest) {
-    return gulp.src(src)
+function buildCss(cssSrc, sassSrc, dest) {
+    return es.merge(gulp.src(cssSrc), gulp.src(sassSrc).pipe(sass()))
         .pipe(concat('styles.css'))
         //.pipe(cssmin())
         .pipe(gulp.dest(dest));
@@ -67,18 +69,18 @@ function buildCss(src, dest) {
 
 function copyIndex() {
     return gulp.src('./src/index.html')
-        /*.pipe(htmlMin({
+        .pipe(htmlMin({
             empty: true,
             spare: true,
             quotes: true
-        }))*/
+        }))
         .pipe(gulp.dest('./dist/'));
 }
 
 function buildAppJs(files, outfile) {
     return gulp.src(files)
         .pipe(browserify())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(outfile));
 }
 

@@ -1,93 +1,96 @@
 <div class="context-detail-view">
     <div class="row">
         <div class="col-sm-12">
-            <h2>{{::ctx.name}}</h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Context name</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Transformation Service:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.transformService}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Processing Service:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.processingService}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Daemon Factory Service:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.daemonFactoryService}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Report Service:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.reportService}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Endpoint Key:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    keys here
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Identity Keys:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    keys here
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Polynomial Map:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    map here
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Threshold (ms):
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.threshold}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Time to Expiration:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    {{::ctx.timeToExpiration}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    Field List:
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    Field list here
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <input type="button" class="btn btn-primary">Edit</div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Transformation Service:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.transformService}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Processing Service:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.processingService}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Daemon Factory Service:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.daemonFactoryService}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Report Service:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.reportService}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Endpoint Key:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                keys here
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Identity Keys:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                keys here
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Polynomial Map:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                map here
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Threshold (ms):
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.threshold}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Time to Expiration:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                {{::ctx.timeToExpiration}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                Field List:
-            </div>
-            <div class="col-md-8 col-xs-12">
-                Field list here
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <input type="button" class="btn btn-primary">Edit</div>
-            </div>
-        </div>
-
     </div>
 </div>

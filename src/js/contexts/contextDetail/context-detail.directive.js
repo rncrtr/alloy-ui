@@ -1,25 +1,22 @@
-(function() {
-    'use strict';
 
-    angular.module('contexts')
-        .directive('contextDetail', ContextDetailDirective);
+'use strict';
 
-    function ContextDetailDirective() {
+function ContextDetailDirective() {
 
-        return {
-            restrict: 'E',
-            template: 'context-detail-view.html',
-            scope: {
-                ctx: "=ctx"
-            },
-            link: link
-        }
+    return {
+        restrict: 'E',
+        template: 'context-detail-view.html',
+        scope: {
+            ctx: "=ctx"
+        },
+        link: link
+    }
 
-        function link($scope, $elem, $attrs) {
-
-        }
-
+    function link($scope, $elem, $attrs) {
 
     }
 
-}());
+}
+
+module.exports = ContextDetailDirective;
+

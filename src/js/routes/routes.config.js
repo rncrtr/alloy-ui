@@ -1,5 +1,12 @@
 'use strict';
 
+/** Set up so each route has a dedicated template
+ *  Templates for routes are found in ./templates
+ *  Controllers for routes (if needed) are found in ./controllers
+ *  If possible, controller type functionality should be part of a specific component
+ *  instead of the route.
+ */
+
 RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RouteConfig($stateProvider, $urlRouterProvider) {
 
@@ -8,15 +15,31 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('main', {
             abstract: true,
-            templateUrl: 'partials/main-template.html'
+            templateUrl: 'routes/templates/main-template.html'
         })
         .state('main.contexts', {
             url: '/contexts',
-            templateUrl: "contexts/contextList/context-list-view.html"
+            templateUrl: 'routes/templates/contexts-template.html'
         })
-        .state('main.contextDetail', {
-            url: "/contexts/{id}",
-            templateUrl: "contexts/contextDetail/context-detail-view.html"
+        .state('main.context-detail', {
+            url: "/contexts/:id",
+            templateUrl: ""
+        })
+        .state('main.scripts', {
+            url: '/scripts',
+            templateUrl: 'routes/templates/scripts-template.html'
+        })
+        .state('main.script-detail', {
+            url: '/scripts/:id',
+            templateUrl: 'routes/templates/script-detail-template.html'
+        })
+        .state('main.servers', {
+            url: '/servers',
+            templateUrl: 'routes/templates/servers-template.html'
+        })
+        .state('main.server-detail', {
+            url: '/servers/:id',
+            templateUrl: 'routes/templates/server-detail-template.html'
         })
 }
 
