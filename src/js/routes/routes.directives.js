@@ -15,8 +15,6 @@ function activeLinkDirective($location) {
             return $location.path();
         },
         function pathChanged(newVal) {
-            console.log(newVal);
-            console.log($scope.routeName);
             if (newVal.indexOf($scope.routeName) >= 0) {
                 $elem.addClass('active');
             } else {
