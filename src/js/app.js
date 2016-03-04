@@ -4,9 +4,11 @@ var angular = require('angular');
 
 var routes = require('./routes'),
     contexts = require('./contexts'),
-    reports = require('./reports');
+    reports = require('./reports'),
+    gridTable = require('./gridTable');
 
 
-var DEPS = [routes, contexts, reports, 'templates'];
+var DEPS = [routes, contexts, reports, gridTable,'templates'];
 
-angular.module('app', DEPS);
+angular.module('app', DEPS)
+       .service('dataService',require('./data.service'));

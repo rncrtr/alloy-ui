@@ -1,7 +1,7 @@
 // include dependencies
 var express    = require('express');
 var app        = express();
-var port     = process.env.port || 3000; // set our port
+var port     = process.env.port || 3001; // set our port
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
