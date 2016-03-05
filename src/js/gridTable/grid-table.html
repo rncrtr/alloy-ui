@@ -1,10 +1,10 @@
-this is the grid
+<br />
+{{viewData}}
 <div ng-show="viewData.totalItems > 0">
-      <div class="row" ng-show="viewData.currPage > 1">
+      <div class="row" ng-show="viewData.currPage >= 1">
         <div class="col-md-offset-1 col-md-2" style="padding: 10px 0px 10px 0px;">
           Page Size:&nbsp;
-          <select id="pageSizeSelect" ng-model="viewData.pageSize" ng-change="pageSizeChanged()">
-            <option value="{{set}}" ng-repeat="set in viewData.pageSets">{{set}}</option>
+          <select id="pageSizeSelect" ng-model="viewData.pageSize" ng-options="set.value as set.name for set in viewData.pageSets" ng-change="pageSizeChanged()">
           </select>
         </div>
       </div>
@@ -14,10 +14,12 @@ this is the grid
           <thead>
             <tr>
             <!-- repeat here -->
+            <!-- | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search -->
               <th ng-repeat="thisField in viewData.fieldLabels | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search">
-                <a href="#" ng-click="viewData.sortType = thisField; viewData.sortReverse = !viewData.sortReverse">
-                  <span ng-show="viewData.sortType == thisField && viewData.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="viewData.sortType == thisField && !viewData.sortReverse" class="fa fa-caret-up"></span>
+                <a href="#" ng-click="viewData.sortType = XYZ; viewData.sortReverse = !viewData.sortReverse">
+                  {{::thisField}}
+                  <span ng-show="viewData.sortType == XYZ && viewData.sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="viewData.sortType == XYZ && !viewData.sortReverse" class="fa fa-caret-up"></span>
                 </a>
               </th>
             <!-- /repeat here -->
@@ -28,7 +30,14 @@ this is the grid
           </thead>
           <tbody>
             <tr class="reports-rows" ng-repeat="thisRow in results | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search" data-id="{{thisRow.id}}">
-              <td ng-repeat="thisField in thisRow">{{::thisField}}</td> 
+              <td ng-repeat="(thisKey,thisValue) in thisRow" ng-show="{{viewData.hideFields.indexOf(thisKey)}}==-1">
+                {{::thisValue}}
+              </td>
+              <td class="text-center">
+                <button ng-id="thisRow.id" ng-repeat="thisAction in viewData.actions" class="btn btn-xs" ng-class="thisAction.class" ng-click="tellMeAboutIt(thisRow.id,thisAction.url)">
+                  {{::thisAction.label}}
+                </button>&nbsp;
+              </td> 
             </tr>
           </tbody>
         </table>
@@ -36,7 +45,11 @@ this is the grid
       <div class="row"><br />
         <div id="pagerNav" class="col-md-offset-1 col-md-10">
             <div class="row" ng-show="viewData.currPage > 1">
-                <div class="col-md-offset-2 col-md-1"><button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1"><span class="fa fa-fw fa-chevron-left"></span></button></div>
+                <div class="col-md-offset-2 col-md-1">
+                  <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1">
+                    <span class="fa fa-fw fa-chevron-left"></span>
+                  </button>
+                </div>
                 <div class="col-md-6 text-center">
                   <!-- BEFORE CURRENT PAGE -->
                   <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 4" ng-click="viewData.currPage = 1">1</button>
