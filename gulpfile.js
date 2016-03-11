@@ -52,14 +52,38 @@ gulp.task('bundle', ['clean'], function() {
 gulp.task('build', ['ng', 'css', 'img', 'bundle', 'copy']);
 
 gulp.task('watch', ['build'], function() {
-    gulp.src('./src/**/*.*')
-        .pipe(watch('./src/**/*.*', function(files) {
-            console.log('Rebuilding...')
+   /* gulp.src('./src/!**!/!*.*')
+        .pipe(watch('./src/!**!/!*.*', function(file) {
+            console.log(file.path);
             buildAppJs('./src/js/app.js', './dist/js');
-            buildCss('./src/css/**/*.css', './src/sass/**/*.scss', 'dist/css');
-            buildTemplates("./src/js/**//*.html", "templates.min.js", "./dist/js/");
+            buildCss('./src/css/!**!/!*.css', './src/sass/!**!/!*.scss', 'dist/css');
+            buildTemplates("./src/js/!**!//!*.html", "templates.min.js", "./dist/js/");
             copyIndex();
+        }));*/
+
+    gulp.src('./src/**/*.*css')
+        .pipe(watch('./src/**/*.*css', function(file) {
+            console.log(file.path + " changed, rebuilding dist/css");
+            buildCss('./src/css/**/*.css', './src/sass/**/*.scss', 'dist/css');
         }));
+
+    gulp.src('./src/**/*.js')
+        .pipe(watch('./src/**/*.js', function(file) {
+            console.log(file.path + " changed, rebuilding app.js");
+            buildAppJs('./src/js/app.js', './dist/js');
+        }));
+
+    gulp.src('./src/js/**/*.html')
+        .pipe(watch('./src/js/**/*.html', function(file) {
+            console.log(file.path + " changed, rebuilding templates.min.js");
+            buildTemplates("./src/js/**//*.html", "templates.min.js", "./dist/js/");
+        }));
+
+    gulp.src('./src/index.html')
+        .pipe(watch('./src/index.html', function(file) {
+            console.log(file.path + " changed, rebuilding index.html");
+            copyIndex();
+        }))
 });
 
 gulp.task('default', ['build']);
