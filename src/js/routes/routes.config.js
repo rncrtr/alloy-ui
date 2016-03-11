@@ -25,6 +25,14 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
             url: "/contexts/:id",
             templateUrl: "routes/templates/context-detail-template.html"
         })
+        .state('main.reports', {
+            url: '/reports',
+            templateUrl: 'routes/templates/reports-template.html'
+        })
+        .state('main.report-detail', {
+            url: "/contexts/:id/reports/:rid",
+            templateUrl: "routes/templates/report-detail-template.html"
+        })
         .state('main.scripts', {
             url: '/scripts',
             templateUrl: 'routes/templates/scripts-template.html'

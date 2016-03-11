@@ -12,39 +12,55 @@ function gridTable(dataService) {
   };
   return directive;
 
-  function link(scope, element, attrs){
+  function link($scope, $element, $attrs){
     // init nicer vars for local consumption and reuse
-    var url = scope.viewData.rest_url;
-    var method = scope.viewData.rest_method.toUpperCase();
-    var params = scope.viewData.rest_params;
+    var url = $scope.viewData.rest_url;
+    var method = $scope.viewData.rest_method.toUpperCase();
+    var params = $scope.viewData.rest_params;
+
+    // init grid configs
+    $scope.viewData.currPage = 1;
+    $scope.viewData.pageSize = 25;
+    $scope.viewData.pageSets = [
+        {'name':'10','value':10},
+        {'name':'25','value':25},
+        {'name':'50','value':50},
+        {'name':'100','value':100},
+        {'name':'500','value':500},
+        {'name':'1000','value':1000}
+    ];
+    $scope.viewData.lastPage = Math.round($scope.viewData.totalItems / $scope.viewData.pageSize);
+    $scope.viewData.sortReverse = false;
+    $scope.viewData.search = '';
 
     getData();
-    scope.tellMeAboutIt = function(id, url){
-      console.log(id, url);
+    $scope.actionButtonClick = function(id, url){
+      //console.log(id, url);
       if(url.indexOf(':id')){
         url = url.replace(/\:id/ig,id);
       }
-      console.log(url);
+      // console.log(url);
       location.href = url;
     }
 
     // call data on the service
     function getData(){
       dataService.getRest(url, method, params).then(function(result){
-        console.log(result);
-        scope.results = result;
+        // console.log(result);
+        $scope.results = result;
       });
     }
 
     // requery data when the pageSize is selected
-    scope.pageSizeChanged = function() {
-      scope.viewData.lastPage = Math.round(scope.viewData.totalItems / scope.viewData.pageSize);
+    $scope.pageSizeChanged = function() {
+      $scope.viewData.lastPage = Math.round($scope.viewData.totalItems / $scope.viewData.pageSize);
       return getData();
     };
 
     // requery data when the currPage changes
-    scope.$watch('viewData.currPage', (function() {
+    $scope.$watch('viewData.currPage', (function() {
       getData();
+      console.log($scope.viewData);
     }));
   }
 }

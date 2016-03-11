@@ -1,19 +1,20 @@
 
 'use strict';
-
-function ContextDetailDirective() {
+ContextDetailDirective.$inject = ['dataService'];
+function ContextDetailDirective(dataService) {
 
     return {
         restrict: 'E',
-        template: 'context-detail-view.html',
+        templateUrl: 'contexts/contextDetail/context-detail-view.html',
         scope: {
             ctx: "=ctx"
         },
+        
         link: link
     }
 
     function link($scope, $elem, $attrs) {
-
+        $scope.showReports = true;
     }
 
 }

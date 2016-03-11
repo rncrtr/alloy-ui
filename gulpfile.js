@@ -37,6 +37,10 @@ gulp.task('css', ['clean'], function() {
     buildCss('./src/css/**/*.css', './src/sass/**/*.scss', 'dist/css');
 });
 
+gulp.task('img', ['clean'], function() {
+    buildImg('./src/img/*', 'dist/img');
+});
+
 gulp.task('copy', ['clean'], function() {
     copyIndex();
 });
@@ -45,7 +49,7 @@ gulp.task('bundle', ['clean'], function() {
     buildAppJs('./src/js/app.js', './dist/js');
 });
 
-gulp.task('build', ['ng', 'css', 'bundle', 'copy']);
+gulp.task('build', ['ng', 'css', 'img', 'bundle', 'copy']);
 
 gulp.task('watch', ['build'], function() {
     gulp.src('./src/**/*.*')
@@ -64,6 +68,11 @@ function buildCss(cssSrc, sassSrc, dest) {
     return es.merge(gulp.src(cssSrc), gulp.src(sassSrc).pipe(sass()))
         .pipe(concat('styles.css'))
         //.pipe(cssmin())
+        .pipe(gulp.dest(dest));
+}
+
+function buildImg(imgSrc, dest) {
+    return gulp.src(imgSrc)
         .pipe(gulp.dest(dest));
 }
 

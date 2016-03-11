@@ -1,74 +1,75 @@
-<br />
-{{viewData}}
 <div ng-show="viewData.totalItems > 0">
-      <div class="row" ng-show="viewData.currPage >= 1">
-        <div class="col-md-offset-1 col-md-2" style="padding: 10px 0px 10px 0px;">
-          Page Size:&nbsp;
-          <select id="pageSizeSelect" ng-model="viewData.pageSize" ng-options="set.value as set.name for set in viewData.pageSets" ng-change="pageSizeChanged()">
-          </select>
-        </div>
-      </div>
-      <div class="row" ng-show="!loader.start">
-        <br />
-        <table class="col-md-8 col-md-offset-2 table-condensed table-bordered table-striped table-hover">
-          <thead>
-            <tr>
-            <!-- repeat here -->
-            <!-- | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search -->
-              <th ng-repeat="thisField in viewData.fieldLabels | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search">
-                <a href="#" ng-click="viewData.sortType = XYZ; viewData.sortReverse = !viewData.sortReverse">
-                  {{::thisField}}
-                  <span ng-show="viewData.sortType == XYZ && viewData.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="viewData.sortType == XYZ && !viewData.sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>
-            <!-- /repeat here -->
-              <th style="width: 100px">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="reports-rows" ng-repeat="thisRow in results | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search" data-id="{{thisRow.id}}">
-              <td ng-repeat="(thisKey,thisValue) in thisRow" ng-show="{{viewData.hideFields.indexOf(thisKey)}}==-1">
-                {{::thisValue}}
-              </td>
-              <td class="text-center">
-                <button ng-id="thisRow.id" ng-repeat="thisAction in viewData.actions" class="btn btn-xs" ng-class="thisAction.class" ng-click="tellMeAboutIt(thisRow.id,thisAction.url)">
-                  {{::thisAction.label}}
-                </button>&nbsp;
-              </td> 
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="row"><br />
-        <div id="pagerNav" class="col-md-offset-1 col-md-10">
-            <div class="row" ng-show="viewData.currPage > 1">
-                <div class="col-md-offset-2 col-md-1">
-                  <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1">
-                    <span class="fa fa-fw fa-chevron-left"></span>
-                  </button>
-                </div>
-                <div class="col-md-6 text-center">
-                  <!-- BEFORE CURRENT PAGE -->
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 4" ng-click="viewData.currPage = 1">1</button>
-                  <span class="pager-ellipses" ng-show="viewData.currPage > 4">...</span>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 3" ng-click="viewData.currPage = viewData.currPage - 3">{{viewData.currPage - 3}}</button>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 2" ng-click="viewData.currPage = viewData.currPage - 2">{{viewData.currPage - 2}}</button>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 1" ng-click="viewData.currPage = viewData.currPage - 1">{{viewData.currPage - 1}}</button>
-                  <!-- /BEFORE CURRENT PAGE -->
-                  <button class="btn btn-link btn-primary text-white pager-btn" style="font-weight: bold">{{viewData.currPage}}</button>
-                  <!-- AFTER CURRENT PAGE -->
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 1" ng-click="viewData.currPage = viewData.currPage + 1">{{viewData.currPage + 1}}</button>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 2" ng-click="viewData.currPage = viewData.currPage + 2">{{viewData.currPage + 2}}</button>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 3" ng-click="viewData.currPage = viewData.currPage + 3">{{viewData.currPage + 3}}</button>
-                  <!-- AFTER CURRENT PAGE -->
-                  <span class="pager-ellipses" ng-show="viewData.currPage < viewData.lastPage - 4">...</span>
-                  <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage" ng-click="viewData.currPage = viewData.lastPage">{{viewData.lastPage}}</button>
-                </div>
-                <div class="col-md-3"><button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == viewData.lastPage" ng-click="viewData.currPage = viewData.currPage + 1"><span class="fa fa-fw fa-chevron-right"></span></button></div>
-            </div> 
-        </div>
-      </div>
+  <div class="row" ng-show="viewData.currPage >= 1">
+    <div class="col-md-offset-1 col-md-2" style="padding: 10px 0px 10px 0px;">
+      Page Size:&nbsp;
+      <select id="pageSizeSelect" ng-model="viewData.pageSize" ng-options="set.value as set.name for set in viewData.pageSets" ng-change="pageSizeChanged()">
+      </select>
     </div>
+  </div>
+  <div class="row" ng-show="!loader.start">
+    <br />
+    <table class="col-md-8 col-md-offset-2 table-condensed table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+        <!-- repeat here -->
+        <!-- | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search -->
+          <th ng-repeat="thisField in viewData.fieldLabels | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search">
+            <a href="#" ng-click="viewData.sortType = XYZ; viewData.sortReverse = !viewData.sortReverse">
+              {{::thisField}}
+              <span ng-show="viewData.sortType == XYZ && viewData.sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="viewData.sortType == XYZ && !viewData.sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+        <!-- /repeat here -->
+          <th style="width: 100px">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="reports-rows" ng-repeat="thisRow in results | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search" data-id="{{thisRow.id}}">
+          <td ng-repeat="(thisKey,thisValue) in thisRow" ng-show="{{viewData.hideFields.indexOf(thisKey)}}==-1">
+            {{::thisValue}}
+          </td>
+          <td class="text-center">
+            <button ng-id="thisRow.id" ng-repeat="thisAction in viewData.actions" class="btn btn-xs" ng-class="thisAction.class" ng-click="actionButtonClick(thisRow.id,thisAction.url)">
+              {{::thisAction.label}}
+            </button>&nbsp;
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row"><br />
+    <div id="pagerNav" class="col-md-offset-1 col-md-10">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-1">
+          <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1"><span class="fa fa-fw fa-chevron-left"></span></button>
+        </div>
+        <div class="col-md-6 text-center">
+            <!-- BEFORE CURRENT PAGE -->
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 4" ng-click="viewData.currPage = 1">1</button>
+            <span class="pager-ellipses" ng-show="viewData.currPage > 4">...</span>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 3" ng-click="viewData.currPage = viewData.currPage - 3">{{viewData.currPage - 3}}</button>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 2" ng-click="viewData.currPage = viewData.currPage - 2">{{viewData.currPage - 2}}</button>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage > 1" ng-click="viewData.currPage = viewData.currPage - 1">{{viewData.currPage - 1}}</button>
+            <!-- /BEFORE CURRENT PAGE -->
+            <button class="btn btn-link btn-primary text-white pager-btn" style="font-weight: bold">{{viewData.currPage}}</button>
+            <!-- AFTER CURRENT PAGE -->
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 1" ng-click="viewData.currPage = viewData.currPage + 1">{{viewData.currPage + 1}}</button>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 2" ng-click="viewData.currPage = viewData.currPage + 2">{{viewData.currPage + 2}}</button>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage - 3" ng-click="viewData.currPage = viewData.currPage + 3">{{viewData.currPage + 3}}</button>
+            <!-- AFTER CURRENT PAGE -->
+            <span class="pager-ellipses" ng-show="viewData.currPage < viewData.lastPage - 4">...</span>
+            <button class="btn btn-link pager-btn" ng-show="viewData.currPage < viewData.lastPage" ng-click="viewData.currPage = viewData.lastPage">{{viewData.lastPage}}</button>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == viewData.lastPage" ng-click="viewData.currPage = viewData.currPage + 1"><span class="fa fa-fw fa-chevron-right"></span></button>
+        </div>
+    </div> 
+  </div>
+  </div>
+</div>
+<div ng-hide="viewData.totalItems > 0">
+  <i class="fa fa-fw fa-exclamation-triangle"></i>&nbsp;There is nothing to display. 
+</div>
