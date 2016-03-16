@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="margin-bottom: 20px;">
     <div class="col-md-12">
         <ul class="nav nav-tabs">
             <li role="presentation" ng-class="{'active': !isEdit}" ng-click="didClickView()"><a href="">View</a></li>
@@ -7,33 +7,33 @@
     </div>
 </div>
 
-<div ng-show="!isEdit">
+<div class="data-list" ng-show="!isEdit">
     <div class="row">
-        <div class="col-md-4 col-xs-12">Server Name:</div>
+        <label class="col-md-4 col-xs-12">Server Name:</label>
         <div class="col-md-8 col-xs-12">{{::srv.name || '#Server Name#'}}</div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-xs-12">Timeout(ms):</div>
+        <label class="col-md-4 col-xs-12">Timeout(ms):</label>
         <div class="col-md-8 col-xs-12">{{::srv.timeout || '#Server Timeout#'}}</div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-xs-12">Base Url:</div>
+        <label class="col-md-4 col-xs-12">Base Url:</label>
         <div class="col-md-8 col-xs-12">{{::srv.url || '#Server Url#'}}</div>
     </div>
 </div>
 
-<div ng-show="isEdit">
+<div class="data-list" ng-show="isEdit">
     <div class="row">
-        <div class="col-md-4 col-xs-12">Server Name:</div>
-        <div class="col-md-8 col-xs-12">{{::srv.name || '#Server Name#'}}</div>
+        <label class="col-md-5 col-xs-12">Server Name:</label>
+        <div class="col-md-7 col-xs-12">{{::srv.name || '#Server Name#'}}</div>
     </div>
-    <div class="row">
-        <div class="col-md-4 col-xs-12">Timeout(ms):</div>
-        <div class="col-md-8 col-xs-12"><input type="number" ng-model="srv.timeout" placeholder="Enter timeout" /> </div>
+    <div class="row field-group">
+        <label class="col-md-5 col-xs-12">Timeout(ms):</label>
+        <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="srv.timeout" /></div>
     </div>
-    <div class="row">
-        <div class="col-md-4 col-xs-12">Base Url:</div>
-        <div class="col-md-8 col-xs-12"><input type="text" ng-model="srv.url" placeholder="Enter server url" /></div>
+    <div class="row field-group">
+        <label class="col-md-5 col-xs-12">Base Url:</label>
+        <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="srv.baseUrl" /></div>
     </div>
-    <button type="button" ng-click="console.log('SAVED')">Save</button>
+    <button type="button" class="btn btn-primary" ng-click="console.log('SAVED')">Save</button>
 </div>
