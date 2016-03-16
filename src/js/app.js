@@ -7,10 +7,11 @@ var routes = require('./routes'),
     reports = require('./reports'),
     trainingDataUpload = require('./trainingDataUpload'),
     gridTable = require('./gridTable'),
+    helpers = require('./helpers'),
+    uiBootstrap = require('angular-ui-bootstrap'),
     ngFileUpload = require('ng-file-upload');
 
-
-var DEPS = [routes, contexts, reports, gridTable,'templates',trainingDataUpload,ngFileUpload];
+var DEPS = [routes, contexts, reports, 'templates',trainingDataUpload, gridTable, helpers, uiBootstrap, ngFileUpload];
 
 angular.module('app', DEPS)
        .service('dataService',require('./data.service'));
