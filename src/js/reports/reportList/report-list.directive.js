@@ -1,6 +1,6 @@
 'use strict';
-ReportListController.$inject = ['dataService'];
-function ReportListController(dataService) {
+ReportListController.$inject = ['dataService','$stateParams'];
+function ReportListController(dataService,$stateParams) {
 
     return {
         restrict: 'E',
@@ -12,15 +12,16 @@ function ReportListController(dataService) {
     }
 
     function link($scope, $elem, $attrs) {
+        var context_name = $stateParams.context_name
         // set config
         var viewData = {};
         viewData.rest_url = '';
         viewData.rest_method = 'get';
-        viewData.rest_params = '';
+        viewData.rest_params = 'name='+context_name;
         viewData.totalItems = 39;
         viewData.fieldLabels = ['Field 1'];
-        viewData.hideFields = ['id'];
-        viewData.sortType = 'id';
+        viewData.hideFields = ['field2'];
+        viewData.sortType = 'field1';
 
         // array of action objects label, class, url to for
         viewData.actions = [

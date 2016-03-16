@@ -12,13 +12,23 @@ function ContextDetailDirective(dataService,$stateParams) {
     }
 
     function link($scope, $elem, $attrs) {
-        var contextid = $stateParams.id;
-        var url = '/context/'+contextid;
-        var method = 'GET';
-        var params = '';
-        dataService.getRest(url, method, params).then(function(result){
-            $scope.ctx = result;
-        });
+        function initContext(){
+            console.log('init context detail');
+            var contextid = $stateParams.context_name;
+            var url = '/context/'+contextid;
+            var method = 'GET';
+            var params = '';
+            dataService.getRest(url, method, params).then(function(result){
+                $scope.ctx = result;
+            });
+        }
+
+        function saveContext(){
+            console.log('save to server here');
+            $scope.editContext = false;
+        }
+
+        initContext();
     }
 
 }

@@ -1,7 +1,7 @@
 'use strict';
 dataService.$inject = ['$http'];
 function dataService($http){
-  var BASE_URL = 'http://localhost:3002';
+  var BASE_URL = 'http://localhost:3001';
   var url = '';
   var CALL_BACK = '?callback=JSON_CALLBACK';
   var micro_headers = {

@@ -8,49 +8,49 @@
                 </div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Transformation Service:</div>
+                <label class="col-md-5 col-xs-12">Transformation Service:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.transformService || '#Transformation Service Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Processing Service:</div>
+                <label class="col-md-5 col-xs-12">Processing Service:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.processingService || '#Processing Service Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Daemon Factory Service:</div>
+                <label class="col-md-5 col-xs-12">Daemon Factory Service:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.daemonFactoryService || '#Daemon Factory Service Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Report Service:</div>
+                <label class="col-md-5 col-xs-12">Report Service:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.reportService || '#Report Service Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Endpoint Key:</div>
+                <label class="col-md-5 col-xs-12">Endpoint Key:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.endpointKey || '#Endpoint Key Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Identity Keys:</div>
+                <label class="col-md-5 col-xs-12">Identity Keys:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.identityKey || '#Identity Key Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Polynomial Map:</div>
+                <label class="col-md-5 col-xs-12">Polynomial Map:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.polynomialMap || '#Polynomial Map Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Threshold (ms):</div>
+                <label class="col-md-5 col-xs-12">Threshold (ms):</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.threshold || '#Threshold Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Time to Expiration:</div>
+                <label class="col-md-5 col-xs-12">Time to Expiration:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.expiration || '#Expiration Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-md-5 col-xs-12">Field List:</div>
+                <label class="col-md-5 col-xs-12">Field List:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.fieldList || '#Field List Value#'}}</div>
             </div>
             <div class="row field-group">
-                <div class="col-xs-12">
+                <div class="col-xs-7 col-md-offset-5">
                     <br />
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary" ng-click="editContext = true">Edit</button>
                 </div>
             </div>
         </div>
@@ -101,9 +101,9 @@
                 <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.fieldList || '#Field List Value#'" /></div>
             </div>
             <div class="row field-group">
-                <div class="col-xs-12">
+                <div class="col-xs-7 col-md-offset-5">
                     <br />
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary" ng-click="saveContext()">Save</button>
                 </div>
             </div>
         </div>
