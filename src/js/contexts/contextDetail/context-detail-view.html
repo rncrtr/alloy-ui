@@ -1,7 +1,7 @@
 <div class="context-detail-view">
     <div class="row">
         <!-- CONTEXT -->
-        <div class="col-md-12" ng-show="!editContext">
+        <div class="col-md-12 data-list" ng-show="!editContext">
             <div class="row">
                 <div class="col-xs-12">
                     <h2>{{::ctx.contextName || 'Context'}}</h2>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12" ng-show="editContext">
+        <div class="col-md-12 data-list" ng-show="editContext">
             <div class="row">
                 <div class="col-xs-12">
                     <h2>{{::ctx.contextName || 'Context'}}</h2>
