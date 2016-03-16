@@ -1,146 +1,112 @@
 <div class="context-detail-view">
     <div class="row">
-        <div class="col-xs-12">
-            <ul class="nav nav-tabs">
-                <li role="presentation" active-link=""><a ui-sref="">View</a></li>
-                <li role="presentation" active-link=""><a ui-sref="">Edit</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
         <!-- CONTEXT -->
-        <div class="col-md-6" ng-show="!contextEditMode">
+        <div class="col-md-12" ng-show="!editContext">
             <div class="row">
                 <div class="col-xs-12">
                     <h2>{{::ctx.contextName || 'Context'}}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Transformation Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.transformService || '#Transformation Service Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Transformation Service:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.transformService || '#Transformation Service Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Processing Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.processingService || '#Processing Service Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Processing Service:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.processingService || '#Processing Service Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Daemon Factory Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.daemonFactoryService || '#Daemon Factory Service Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Daemon Factory Service:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.daemonFactoryService || '#Daemon Factory Service Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Report Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.reportService || '#Report Service Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Report Service:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.reportService || '#Report Service Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Endpoint Key:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.endpointKey || '#Endpoint Key Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Endpoint Key:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.endpointKey || '#Endpoint Key Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Identity Keys:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.identityKey || '#Identity Key Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Identity Keys:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.identityKey || '#Identity Key Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Polynomial Map:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.polynomialMap || '#Polynomial Map Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Polynomial Map:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.polynomialMap || '#Polynomial Map Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Threshold (ms):</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.threshold || '#Threshold Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Threshold (ms):</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.threshold || '#Threshold Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Time to Expiration:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.expiration || '#Expiration Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Time to Expiration:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.expiration || '#Expiration Value#'}}</div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Field List:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.fieldList || '#Field List Value#'}}</div>
+            <div class="row field-group">
+                <div class="col-md-5 col-xs-12">Field List:</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.fieldList || '#Field List Value#'}}</div>
             </div>
-            <div class="row">
+            <div class="row field-group">
                 <div class="col-xs-12">
                     <br />
                     <button class="btn btn-primary">Edit</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-6" ng-show="contextEditMode">
+        <div class="col-md-12" ng-show="editContext">
             <div class="row">
                 <div class="col-xs-12">
                     <h2>{{::ctx.contextName || 'Context'}}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Transformation Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.transformService || '#Transformation Service Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Transformation Service:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.transformService || '#Transformation Service Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Processing Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.processingService || '#Processing Service Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Processing Service:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.processingService || '#Processing Service Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Daemon Factory Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.daemonFactoryService || '#Daemon Factory Service Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Daemon Factory Service:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.daemonFactoryService || '#Daemon Factory Service Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Report Service:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.reportService || '#Report Service Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Report Service:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.reportService || '#Report Service Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Endpoint Key:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.endpointKey || '#Endpoint Key Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Endpoint Key:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.endpointKey || '#Endpoint Key Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Identity Keys:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.identityKey || '#Identity Key Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12 ">Identity Keys:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.identityKey || '#Identity Key Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Polynomial Map:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.polynomialMap || '#Polynomial Map Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Polynomial Map:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.polynomialMap || '#Polynomial Map Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Threshold (ms):</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.threshold || '#Threshold Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Threshold (ms):</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.threshold || '#Threshold Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Time to Expiration:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.expiration || '#Expiration Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Time to Expiration:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.expiration || '#Expiration Value#'" /></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-xs-12">Field List:</div>
-                <div class="col-md-8 col-xs-12">{{::ctx.fieldList || '#Field List Value#'}}</div>
+            <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Field List:</label>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.fieldList || '#Field List Value#'" /></div>
             </div>
-            <div class="row">
+            <div class="row field-group">
                 <div class="col-xs-12">
                     <br />
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
         <!-- /CONTEXT -->
-        <!-- REPORT DETAIL -->
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Reports</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <report-list data-view="ctx.id"></report-list>
-                </div>
-            </div>
-        </div>
-        <!-- /REPORT DETAIL -->
-        <!-- TRAINING DATA -->
-        <div class="col-md-6" ng-hide="showReports">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Training Data Upload</h2>
-                </div>
-            </div>
-            <div class="row">
-                <training-data-upload></training-data-upload>
-            </div>
-        </div>
-        <!-- /TRAINING DATA -->
     </div>
 </div>

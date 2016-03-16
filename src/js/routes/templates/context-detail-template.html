@@ -1,1 +1,37 @@
-<context-detail></context-detail>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+        <div class="col-xs-12">
+          <ul class="nav nav-tabs">
+              <li role="presentation" ng-class="{'active':!editContext}" ng-click="editContext = false"><a href="">View</a></li>
+              <li role="presentation" ng-class="{'active':editContext}" ng-click="editContext = true"><a href="">Edit</a></li>
+          </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <context-detail data-edit="editContext"></context-detail>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="nav nav-tabs">
+          <li role="presentation" ng-class="{'active':showReports}" ng-click="showReports = true"><a href="">Reports</a></li>
+          <li role="presentation" ng-class="{'active':!showReports}" ng-click="showReports = false"><a href="">Training Data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" ng-show="showReports">
+        <h2>Reports</h2>
+        <report-list></report-list>
+      </div>  
+      <div class="col-md-12" ng-hide="showReports">
+        <h2>Upload JSON Training Data</h2>
+        <training-data-upload></training-data-upload>
+      </div>
+    </div>
+  </div>
+</div>

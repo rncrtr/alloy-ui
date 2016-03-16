@@ -60,7 +60,7 @@ function gridTable(dataService) {
     // requery data when the currPage changes
     $scope.$watch('viewData.currPage', (function() {
       getData();
-      console.log($scope.viewData);
+      // console.log($scope.viewData);
     }));
   }
 }

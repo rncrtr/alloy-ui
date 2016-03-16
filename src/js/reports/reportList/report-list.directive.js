@@ -6,7 +6,7 @@ function ReportListController(dataService) {
         restrict: 'E',
         templateUrl: 'reports/reportList/report-list-view.html',
         scope: {
-            contextid: '=view'
+            context: '=context'
         },
         link: link
     }
@@ -24,7 +24,7 @@ function ReportListController(dataService) {
 
         // array of action objects label, class, url to for
         viewData.actions = [
-            {'label':'View','class':'btn-primary','url':'/#/contexts/'+$scope.contextid+'/reports/:id'}
+            {'label':'View','class':'btn-primary','url':'/#/contexts/'+$scope.context.id+'/reports/:id'}
             //{'label':'Edit','class':'btn-success','url':'/context/:id/edit'},
             //{'label':'Delete','class':'btn-danger','url':'/context/:id/delete'}
         ];

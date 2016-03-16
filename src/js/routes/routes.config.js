@@ -23,7 +23,7 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
         })
         .state('main.context-detail', {
             url: "/contexts/:id",
-            templateUrl: "routes/templates/context-detail-template.html"
+            templateUrl: 'routes/templates/context-detail-template.html'
         })
         .state('main.reports', {
             url: '/reports',
@@ -31,7 +31,7 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
         })
         .state('main.report-detail', {
             url: "/contexts/:id/reports/:rid",
-            templateUrl: "routes/templates/report-detail-template.html"
+            templateUrl: 'routes/templates/report-detail-template.html'
         })
         .state('main.scripts', {
             url: '/scripts',
@@ -48,6 +48,10 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
         .state('main.server-detail', {
             url: '/servers/:id',
             templateUrl: 'routes/templates/server-detail-template.html'
+        })
+        .state('main.training-data-upload', {
+            url: '/trainingdata/:cid',
+            templateUrl: 'routes/templates/training-data-upload-template.html'
         })
 }
 
