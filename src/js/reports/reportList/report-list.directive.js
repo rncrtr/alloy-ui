@@ -19,7 +19,7 @@ function ReportListController(dataService,$stateParams) {
         viewData.rest_params = 'name='+context_name;
         viewData.totalItems = 39;
         viewData.fieldLabels = ['Field 1'];
-        viewData.hideFields = ['field2'];
+        viewData.hideFields = ['id'];
         viewData.sortType = 'field1';
 
         // array of action objects label, class, url to for
