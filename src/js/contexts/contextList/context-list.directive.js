@@ -11,19 +11,17 @@ function ContextListDirective(dataService) {
     }
 
     function link($scope, $elem, $attrs) {
-        // set config
-        var contextData = {};
-        contextData.url = ''; 
-        contextData.method = 'get'; 
-        contextData.params = ''; 
 
         // gridtable config
         var gridTableData = {};
-        gridTableData.rest_url = '';
+        gridTableData.rest_url = '/contexts';
         gridTableData.rest_method = 'get';
         gridTableData.rest_params = '';
-        gridTableData.totalItems = 0;
-        gridTableData.fieldLabels = ['Field 1'];
+        gridTableData.totalItems = 20;
+        gridTableData.fieldLabels = ['Name', 'Transformation Svc', 'Processing Svc',
+            'Daemon Factory Svc', 'Report Svc', 'Endpoint Key',
+            'Identity Key', 'Polynomial Map', 'Threshold',
+            'Expiration (ms)', 'Field List'];
         gridTableData.hideFields = ['id'];
         gridTableData.sortType = 'id';
 
@@ -35,14 +33,6 @@ function ContextListDirective(dataService) {
         ];
         $scope.contexts = gridTableData;
 
-        // call data on the service
-        function getData(){
-          dataService.getRest(contextData.url, contextData.method, contextData.params).then(function(result){
-            // console.log(result);
-            $scope.contexts.results = result;
-          });
-        }
-        getData();
     }
 
 }

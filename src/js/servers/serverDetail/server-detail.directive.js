@@ -1,7 +1,7 @@
 'use strict';
 
-serverDetailDirective.$inject = [];
-function serverDetailDirective() {
+serverDetailDirective.$inject = ['dataService'];
+function serverDetailDirective(dataService) {
 
     return {
         restrict: "E",
@@ -24,6 +24,9 @@ function serverDetailDirective() {
         function didClickEdit() {
             $scope.isEdit = true;
         }
+
+        $scope.srv = dataService.getMockSrv();
+
     }
 
 }

@@ -19,9 +19,10 @@ function ContextDetailDirective(dataService,$stateParams) {
             var url = '/context/'+contextid;
             var method = 'GET';
             var params = '';
-            dataService.getRest(url, method, params).then(function(result){
+            $scope.ctx = dataService.getMockCtx();
+            /*dataService.getRest(url, method, params).then(function(result){
                 $scope.ctx = result;
-            });
+            });*/
         }
 
         $scope.saveContext = function(){
