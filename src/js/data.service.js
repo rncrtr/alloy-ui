@@ -1,6 +1,6 @@
 'use strict';
-dataService.$inject = ['$http'];
-function dataService($http){
+dataService.$inject = ['$http', '$q'];
+function dataService($http, $q){
   var BASE_URL = 'http://localhost:3001';
   var url = '';
   var CALL_BACK = '?callback=JSON_CALLBACK';
@@ -12,12 +12,78 @@ function dataService($http){
 
   // accessible methods
   var service = {
-    getRest: getRest
+    getRest: getRest,
+    getMockCtx: getMockCtx,
+    getMockSrv: getMockSrv
   };
   return service;
 
+
+  function getMockContexts() {
+    return [
+      {'id':0,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':1,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':2,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':3,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':4,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':5,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':6,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':7,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':8,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':9,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':10,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':11,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':12,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':13,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':14,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':15,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':16,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':17,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':18,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':19,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+
+    ];
+  }
+
+  function getMockServers() {
+    return [
+      {'id': 0, 'field1': 'Server #1', 'field2': '2000', 'field3': 'http://thebestserver/ever1'},
+      {'id': 1, 'field1': 'Server #2', 'field2': '800', 'field3': 'http://thebestserver/ever2'},
+      {'id': 2, 'field1': 'Server #3', 'field2': '2000', 'field3': 'http://thebestserver/ever3'},
+      {'id': 3, 'field1': 'Server #4', 'field2': '1400', 'field3': 'http://thebestserver/ever4'},
+      {'id': 4, 'field1': 'Server #5', 'field2': '2000', 'field3': 'http://thebestserver/ever5'},
+      {'id': 5, 'field1': 'Server #6', 'field2': '1500', 'field3': 'http://thebestserver/ever6'},
+      {'id': 6, 'field1': 'Server #7', 'field2': '2000', 'field3': 'http://thebestserver/ever7'},
+      {'id': 7, 'field1': 'Server #8', 'field2': '2000', 'field3': 'http://thebestserver/ever8'},
+      {'id': 8, 'field1': 'Server #9', 'field2': '1800', 'field3': 'http://thebestserver/ever9'},
+    ];
+  }
+
+  function getMockCtx() {
+    return {'id':0,'contextName':'Context 1', 'transformService': 'xfersvc1', 'processingService': 'prcsrvc1', 'daemonFactoryService': 'daemonfactory1', 'reportService': 'reportsvc1', 'endpointKey': 'key1', 'identityKey': 'key1', 'polynomialMap': 'map', 'threshold': '2000', 'expiration': '5000', 'fieldList': 'list'};
+  }
+
+  function getMockSrv() {
+    return {'id': 0, 'name': 'Server #1', 'timeout': '2000', baseUrl: 'http://thebestserver/ever1'};
+  }
+
   function getRest(url,method, params){
-    return $http({
+
+    switch(url) {
+      case '/contexts':
+            return $q.when(getMockContexts());
+            break;
+      case '/servers':
+            return $q.when(getMockServers());
+            break;
+      default:
+            console.log('no method specified!');
+    }
+
+
+
+
+    /*return $http({
       method: method,
       url: BASE_URL+url,
       timeout: 25000,
@@ -32,9 +98,9 @@ function dataService($http){
     }, function fail() {
       console.log('FAILED');
       return returnMock();
-    });
+    });*/
 
-    function returnMock() {
+    function returnMockContexts() {
       var mockData = [
         {'id':0,'field1':'data1'},
         {'id':1,'field2':'data2'},
