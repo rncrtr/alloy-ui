@@ -12,8 +12,9 @@ function ContextDetailDirective(dataService,$stateParams) {
     }
 
     function link($scope, $elem, $attrs) {
+        $scope.formData = [];
+        
         function initContext(){
-            console.log('init context detail');
             var contextid = $stateParams.context_name;
             var url = '/context/'+contextid;
             var method = 'GET';
@@ -23,10 +24,31 @@ function ContextDetailDirective(dataService,$stateParams) {
             });
         }
 
-        function saveContext(){
-            console.log('save to server here');
+        $scope.saveContext = function(){
+            var contextid = $stateParams.context_name;
+            var url = '/context/'+contextid;
+            var method = 'PUT';
+            var params = $scope.formData;
+            console.log(serializeObj($scope.formData));
+            // dataService.getRest(url, method, params).then(function(result){
+            //     $scope.ctx = result;
+            // });
             $scope.editContext = false;
+            console.log($scope.formData);
         }
+
+        function serializeObj(obj) {
+            var result = [];
+            for (var property in obj){
+                if(typeof obj==Array){
+                    result.push(encodeURIComponent(property) + "=" + encodeURIComponent(obj[property]));
+                }else{
+                    result.push(encodeURIComponent(property) + "=[" + encodeURIComponent(obj[property]).replace(/%2C/g,',')+"]");
+                }
+            }
+            return result.join("&");
+        }
+
 
         initContext();
     }

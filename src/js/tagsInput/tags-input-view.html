@@ -1,0 +1,6 @@
+<ul class="tags-input-container">
+  <li class="tag" ng-repeat="tag in typedTags">{{tag}}&nbsp;<i class="fa fa-times" ng-click="removeTag($index)"></i></li>
+  <li class="tag-input-box">
+    <div class="tag-input" ng-keypress="keyPress($event)" contenteditable="true"></div>
+  </li>
+</ul>

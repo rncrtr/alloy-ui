@@ -9,43 +9,43 @@
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Transformation Service:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.transformService || '#Transformation Service Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.transformService}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Processing Service:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.processingService || '#Processing Service Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.processingService}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Daemon Factory Service:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.daemonFactoryService || '#Daemon Factory Service Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.daemonFactoryService}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Report Service:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.reportService || '#Report Service Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.reportService}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Endpoint Key:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.endpointKey || '#Endpoint Key Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.endpointKey}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Identity Keys:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.identityKey || '#Identity Key Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.identityKey}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Polynomial Map:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.polynomialMap || '#Polynomial Map Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.polynomialMap}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Threshold (ms):</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.threshold || '#Threshold Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.threshold}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Time to Expiration:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.expiration || '#Expiration Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.expiration}}</div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Field List:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.fieldList || '#Field List Value#'}}</div>
+                <div class="col-md-7 col-xs-12">{{::ctx.fieldList}}</div>
             </div>
             <div class="row field-group">
                 <div class="col-xs-7 col-md-offset-5">
@@ -62,43 +62,49 @@
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Transformation Service:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.transformService || '#Transformation Service Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.transformService" ng-value="formData.transformService" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Processing Service:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.processingService || '#Processing Service Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.processingService" ng-value="formData.processingService" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Daemon Factory Service:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.daemonFactoryService || '#Daemon Factory Service Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.daemonFactoryService" ng-value="formData.daemonFactoryService" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Report Service:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.reportService || '#Report Service Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.reportService" ng-value="formData.reportService" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Endpoint Key:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.endpointKey || '#Endpoint Key Value#'" /></div>
+                <div class="col-md-7 col-xs-12">
+                    <tags-input typed-tags="formData.endpointKeyTags"></tags-input>
+                </div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12 ">Identity Keys:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.identityKey || '#Identity Key Value#'" /></div>
+                <div class="col-md-7 col-xs-12">
+                    <tags-input typed-tags="formData.identityKeyTags"></tags-input>
+                </div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Polynomial Map:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.polynomialMap || '#Polynomial Map Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.polynomialMap" ng-value="formData.polynomialMap" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Threshold (ms):</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.threshold || '#Threshold Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.threshold" ng-value="formData.threshold" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Time to Expiration:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.expiration || '#Expiration Value#'" /></div>
+                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.expiration" ng-value="formData.expiration" /></div>
             </div>
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Field List:</label>
-                <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-value="::ctx.fieldList || '#Field List Value#'" /></div>
+                <div class="col-md-7 col-xs-12">
+                    <tags-input typed-tags="formData.fieldListTags"></tags-input>
+                </div>
             </div>
             <div class="row field-group">
                 <div class="col-xs-7 col-md-offset-5">

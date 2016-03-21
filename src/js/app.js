@@ -9,9 +9,10 @@ var routes = require('./routes'),
     trainingDataUpload = require('./trainingDataUpload'),
     gridTable = require('./gridTable'),
     helpers = require('./helpers'),
-    ngFileUpload = require('ng-file-upload');
+    ngFileUpload = require('ng-file-upload'),
+    tagsInput = require('./tagsInput');
 
-var DEPS = [routes, contexts, reports, servers, 'templates',trainingDataUpload, gridTable, helpers, ngFileUpload];
+var DEPS = [routes, contexts, reports, servers, 'templates',trainingDataUpload, gridTable, helpers, ngFileUpload,tagsInput];
 
 angular.module('app', DEPS)
        .service('dataService',require('./data.service'));

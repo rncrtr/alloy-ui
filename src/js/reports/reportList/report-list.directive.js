@@ -5,14 +5,13 @@ function ReportListController(dataService,$stateParams) {
     return {
         restrict: 'E',
         templateUrl: 'reports/reportList/report-list-view.html',
-        scope: {
-            context: '=context'
-        },
+        scope: {},
         link: link
     }
 
     function link($scope, $elem, $attrs) {
         var context_name = $stateParams.context_name
+        var report_name = $stateParams.report_name
         // set config
         var viewData = {};
         viewData.rest_url = '';
@@ -25,7 +24,7 @@ function ReportListController(dataService,$stateParams) {
 
         // array of action objects label, class, url to for
         viewData.actions = [
-            {'label':'View','class':'btn-primary','url':'/#/contexts/'+$scope.context.id+'/reports/:id'}
+            {'label':'View','class':'btn-primary','url':'/#/contexts/'+context_name+'/reports/'+report_name}
             //{'label':'Edit','class':'btn-success','url':'/context/:id/edit'},
             //{'label':'Delete','class':'btn-danger','url':'/context/:id/delete'}
         ];

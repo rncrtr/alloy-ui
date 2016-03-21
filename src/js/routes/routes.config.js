@@ -22,7 +22,7 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'routes/templates/contexts-template.html'
         })
         .state('main.context-detail', {
-            url: "/contexts/:id",
+            url: "/contexts/:context_name",
             templateUrl: 'routes/templates/context-detail-template.html'
         })
         .state('main.reports', {
@@ -30,7 +30,7 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'routes/templates/reports-template.html'
         })
         .state('main.report-detail', {
-            url: "/contexts/:id/reports/:rid",
+            url: "/contexts/:context_name/reports/:report_name",
             templateUrl: 'routes/templates/report-detail-template.html'
         })
         .state('main.scripts', {
