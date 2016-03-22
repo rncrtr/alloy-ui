@@ -59,6 +59,18 @@ function dataService($http, $q){
     ];
   }
 
+  function getMockReports() {
+    return [
+      {id: 0, name: "Report #1"},
+      {id: 1, name: "Report #2"},
+      {id: 2, name: "Report #3"},
+      {id: 3, name: "Report #4"},
+      {id: 4, name: "Report #5"},
+      {id: 5, name: "Report #6"},
+      {id: 6, name: "Report #7"},
+    ]
+  }
+
   function getMockCtx() {
     return {'id':0,'contextName':'Context 1', 'transformService': 'xfersvc1', 'processingService': 'prcsrvc1', 'daemonFactoryService': 'daemonfactory1', 'reportService': 'reportsvc1', 'endpointKey': 'key1', 'identityKey': 'key1', 'polynomialMap': 'map', 'threshold': '2000', 'expiration': '5000', 'fieldList': 'list'};
   }
@@ -69,18 +81,15 @@ function dataService($http, $q){
 
   function getRest(url,method, params){
 
-    switch(url) {
-      case '/contexts':
-            return $q.when(getMockContexts());
-            break;
-      case '/servers':
-            return $q.when(getMockServers());
-            break;
-      default:
-            console.log('no method specified!');
+
+    if (url.indexOf('/contexts') >= 0) {
+        if (url.indexOf('/reports') >= 0) {
+          return $q.when(getMockReports());
+        }
+        return $q.when(getMockContexts());
+    } else if (url.indexOf('/servers') >= 0) {
+        return $q.when(getMockServers());
     }
-
-
 
 
     /*return $http({
