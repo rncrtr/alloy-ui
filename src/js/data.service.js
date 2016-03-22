@@ -60,16 +60,27 @@ function dataService($http, $q){
 
   function getMockScripts() {
     return [
-      {'id': 0, 'name': 'Script #1', 'type': 'javascript', 'status': 'In Queue'},
-      {'id': 1, 'name': 'Script #2', 'type': 'groovy', 'status': 'In Queue'},
-      {'id': 2, 'name': 'Script #3', 'type': 'groovy', 'status': 'In Queue'},
-      {'id': 3, 'name': 'Script #4', 'type': 'javascript', 'status': 'Approved'},
-      {'id': 4, 'name': 'Script #5', 'type': 'scala', 'status': 'Approved'},
-      {'id': 5, 'name': 'Script #6', 'type': 'javascript', 'status': 'Approved'},
-      {'id': 6, 'name': 'Script #7', 'type': 'scala', 'status': 'Approved'},
-      {'id': 7, 'name': 'Script #8', 'type': 'javascript', 'status': 'Rejected'},
-      {'id': 8, 'name': 'Script #9', 'type': 'groovy', 'status': 'Rejected'},
+      {'id': 0, 'name': 'Script #1', 'language': 'javascript', 'status': 'In Queue'},
+      {'id': 1, 'name': 'Script #2', 'language': 'groovy', 'status': 'In Queue'},
+      {'id': 2, 'name': 'Script #3', 'language': 'groovy', 'status': 'In Queue'},
+      {'id': 3, 'name': 'Script #4', 'language': 'javascript', 'status': 'Approved'},
+      {'id': 4, 'name': 'Script #5', 'language': 'scala', 'status': 'Approved'},
+      {'id': 5, 'name': 'Script #6', 'language': 'javascript', 'status': 'Approved'},
+      {'id': 6, 'name': 'Script #7', 'language': 'scala', 'status': 'Approved'},
+      {'id': 7, 'name': 'Script #8', 'language': 'javascript', 'status': 'Rejected'},
+      {'id': 8, 'name': 'Script #9', 'language': 'groovy', 'status': 'Rejected'},
     ];
+
+  function getMockReports() {
+    return [
+      {id: 0, name: "Report #1"},
+      {id: 1, name: "Report #2"},
+      {id: 2, name: "Report #3"},
+      {id: 3, name: "Report #4"},
+      {id: 4, name: "Report #5"},
+      {id: 5, name: "Report #6"},
+      {id: 6, name: "Report #7"},
+    ]
   }
 
   function getMockCtx() {
@@ -94,6 +105,16 @@ function dataService($http, $q){
         break;
       default:
         console.log('no method specified!');
+    }
+
+
+    if (url.indexOf('/contexts') >= 0) {
+        if (url.indexOf('/reports') >= 0) {
+          return $q.when(getMockReports());
+        }
+        return $q.when(getMockContexts());
+    } else if (url.indexOf('/servers') >= 0) {
+        return $q.when(getMockServers());
     }
 
   };
