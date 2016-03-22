@@ -41,7 +41,6 @@ function dataService($http, $q){
       {'id':17,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
       {'id':18,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
       {'id':19,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-
     ];
   }
 
@@ -59,6 +58,20 @@ function dataService($http, $q){
     ];
   }
 
+  function getMockScripts() {
+    return [
+      {'id': 0, 'name': 'Script #1', 'type': 'javascript', 'status': 'In Queue'},
+      {'id': 1, 'name': 'Script #2', 'type': 'groovy', 'status': 'In Queue'},
+      {'id': 2, 'name': 'Script #3', 'type': 'groovy', 'status': 'In Queue'},
+      {'id': 3, 'name': 'Script #4', 'type': 'javascript', 'status': 'Approved'},
+      {'id': 4, 'name': 'Script #5', 'type': 'scala', 'status': 'Approved'},
+      {'id': 5, 'name': 'Script #6', 'type': 'javascript', 'status': 'Approved'},
+      {'id': 6, 'name': 'Script #7', 'type': 'scala', 'status': 'Approved'},
+      {'id': 7, 'name': 'Script #8', 'type': 'javascript', 'status': 'Rejected'},
+      {'id': 8, 'name': 'Script #9', 'type': 'groovy', 'status': 'Rejected'},
+    ];
+  }
+
   function getMockCtx() {
     return {'id':0,'contextName':'Context 1', 'transformService': 'xfersvc1', 'processingService': 'prcsrvc1', 'daemonFactoryService': 'daemonfactory1', 'reportService': 'reportsvc1', 'endpointKey': 'key1', 'identityKey': 'key1', 'polynomialMap': 'map', 'threshold': '2000', 'expiration': '5000', 'fieldList': 'list'};
   }
@@ -71,65 +84,18 @@ function dataService($http, $q){
 
     switch(url) {
       case '/contexts':
-            return $q.when(getMockContexts());
-            break;
+        return $q.when(getMockContexts());
+        break;
       case '/servers':
-            return $q.when(getMockServers());
-            break;
+        return $q.when(getMockServers());
+        break;
+      case '/scripts':
+        return $q.when(getMockScripts());
+        break;
       default:
-            console.log('no method specified!');
+        console.log('no method specified!');
     }
 
-
-
-
-    /*return $http({
-      method: method,
-      url: BASE_URL+url,
-      timeout: 25000,
-      headers: micro_headers,
-      data: params
-    }).then(function(result){
-      if(result.length > 0){
-        return result.data;
-      }else{
-        return returnMock();
-      }
-    }, function fail() {
-      console.log('FAILED');
-      return returnMock();
-    });*/
-
-    function returnMockContexts() {
-      var mockData = [
-        {'id':0,'field1':'data1'},
-        {'id':1,'field2':'data2'},
-        {'id':2,'field3':'data3'},
-        {'id':3,'field4':'data4'},
-        {'id':4,'field5':'data5'},
-        {'id':5,'field6':'data6'},
-        {'id':6,'field7':'data7'},
-        {'id':7,'field8':'data8'},
-        {'id':8,'field9':'data9'},
-        {'id':9,'field10':'data10'},
-        {'id':10,'field11':'data11'},
-        {'id':11,'field12':'data12'},
-        {'id':12,'field13':'data13'},
-        {'id':13,'field14':'data14'},
-        {'id':14,'field15':'data15'},
-        {'id':15,'field16':'data16'},
-        {'id':16,'field17':'data17'},
-        {'id':17,'field18':'data18'},
-        {'id':18,'field19':'data19'},
-        {'id':19,'field20':'data20'},
-        {'id':20,'field21':'data21'},
-        {'id':21,'field22':'data22'},
-        {'id':22,'field23':'data23'},
-        {'id':23,'field24':'data24'},
-        {'id':24,'field25':'data25'}
-      ];
-      return mockData;
-    }
   };
 }
 

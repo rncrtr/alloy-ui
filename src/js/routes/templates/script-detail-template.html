@@ -1,1 +1,24 @@
-Template wrapping everything on the script detail page
+<div class="script-detail-view">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>{{::scripts.name || 'Script Detail'}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <pre class="language-javascript">
+        function doStuff(param1,param2){
+          var total = param1 + param2;
+          return total;
+        }
+      </pre>
+    </div>
+    <div class="col-md-3">
+      <b>Status:</b>&nbsp;{{::scripts.status || 'In Queue'}}<br />
+        <b>Language:</b>&nbsp;{{::scripts.language || 'Javascript'}}<br />
+        <br /><br />
+        <b>NOTE:</b> For security reasons, scripts cannot be modified once uploaded.<br /><br />
+        <button class="btn btn-danger">Delete this script</button>
+    </div>
+  </div>
+</div>

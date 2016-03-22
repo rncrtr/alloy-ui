@@ -5,7 +5,7 @@
 
         .controller('ScriptDetailController',ScriptDetailController);
 
-    ScriptDetailController.$inject = [];
+    ScriptDetailController.$inject = ['dataService','$stateParams'];
     function ScriptDetailController() {
 
     }

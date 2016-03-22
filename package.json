@@ -15,7 +15,6 @@
     "angular-ui-event": "^1.0.0",
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6",
-    "connect-multiparty": "^2.0.0",
     "dropzone": "^4.3.0",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
@@ -24,6 +23,7 @@
   "devDependencies": {
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
     "event-stream": "^3.3.2",
     "express": "^4.13.4",
     "fs": "0.0.2",

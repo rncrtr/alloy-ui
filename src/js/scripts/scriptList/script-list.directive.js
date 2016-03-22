@@ -10,19 +10,14 @@ function ScriptListDirective(dataService) {
   }
 
   function link($scope, $elem, $attrs) {
-    // set config
-        var scriptsData = {};
-        scriptsData.url = ''; 
-        scriptsData.method = 'get'; 
-        scriptsData.params = ''; 
 
         // gridtable config
         var gridTableData = {};
-        gridTableData.rest_url = '';
+        gridTableData.rest_url = '/scripts';
         gridTableData.rest_method = 'get';
         gridTableData.rest_params = '';
-        gridTableData.totalItems = 0;
-        gridTableData.fieldLabels = ['Field 1'];
+        gridTableData.totalItems = 10;
+        gridTableData.fieldLabels = ['Name','Language','Status'];
         gridTableData.hideFields = ['id'];
         gridTableData.sortType = 'id';
 
@@ -32,14 +27,6 @@ function ScriptListDirective(dataService) {
         ];
         $scope.scripts = gridTableData;
 
-        // call data on the service
-        function getData(){
-          dataService.getRest(scriptsData.url, scriptsData.method, scriptsData.params).then(function(result){
-            console.log(result);
-            $scope.scripts.results = result;
-          });
-        }
-        getData();
   }
 
 }
