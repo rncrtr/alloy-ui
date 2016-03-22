@@ -1,6 +1,6 @@
 'use strict';
-ReportListController.$inject = ['dataService','$stateParams'];
-function ReportListController(dataService,$stateParams) {
+ReportListController.$inject = ['$stateParams'];
+function ReportListController($stateParams) {
 
     return {
         restrict: 'E',
@@ -18,6 +18,7 @@ function ReportListController(dataService,$stateParams) {
         viewData.rest_method = 'get';
         viewData.rest_params = 'name='+context_name;
         viewData.totalItems = 39;
+
         viewData.fieldLabels = ['Report Name'];
         viewData.hideFields = ['id'];
         viewData.sortType = 'id';

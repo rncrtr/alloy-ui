@@ -26,24 +26,3 @@ function activeLinkDirective($location) {
 }
 
 module.exports = activeLinkDirective;
-
-// // Main Tab Directive
-// tabDirective.$inject = ['$rootScope'];
-// function tabDirective($rootScope) {
-//     return {
-//         restrict: "A",
-//         scope: {
-//             set: '@tab-set',
-//             tab: '@tab-name'
-//         },
-//         link: link
-//     }
-
-//     function link($scope, $elem, $attrs) {
-//         // $elem.addClass('active');
-//         $elem.on('click',function(){
-//             element.html('You clicked me!');
-//         });
-//     }
-// }
-// module.exports = tabDirective;

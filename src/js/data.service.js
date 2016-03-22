@@ -135,21 +135,7 @@ function dataService($http, $q){
         {'id':21,'field22':'data22'},
         {'id':22,'field23':'data23'},
         {'id':23,'field24':'data24'},
-        {'id':24,'field25':'data25'},
-        {'id':25,'field26':'data26'},
-        {'id':26,'field27':'data27'},
-        {'id':27,'field28':'data28'},
-        {'id':28,'field29':'data29'},
-        {'id':29,'field30':'data30'},
-        {'id':30,'field31':'data31'},
-        {'id':31,'field32':'data32'},
-        {'id':32,'field33':'data33'},
-        {'id':33,'field34':'data34'},
-        {'id':34,'field35':'data35'},
-        {'id':35,'field36':'data36'},
-        {'id':36,'field37':'data37'},
-        {'id':37,'field38':'data38'},
-        {'id':38,'field39':'data39'}
+        {'id':24,'field25':'data25'}
       ];
       return mockData;
     }

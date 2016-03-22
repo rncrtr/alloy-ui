@@ -1,7 +1,7 @@
 'use strict';
 
-TrainingDataUploadDirective.$inject = ['Upload','$timeout'];
-function TrainingDataUploadDirective(Upload, $timeout) {
+TrainingDataUploadDirective.$inject = ['$http','$timeout'];
+function TrainingDataUploadDirective($http,$timeout) {
 
     return {
         restrict: 'E',
@@ -11,32 +11,27 @@ function TrainingDataUploadDirective(Upload, $timeout) {
     }
 
     function link($scope, $elem, $attrs) {
-      $scope.uploadFiles = function(files, errFiles) {
-        $scope.f = files;
-        $scope.errFile = errFiles && errFiles[0];
-        console.log(files);
-        if (files) {
-          files.upload = Upload.upload({
-            url: '/api/uploads',
-            method: 'POST',
-            file: files
-          });
-          
-          files.upload.then(function (response) {
-              $timeout(function () {
-                files.result = response.data;
-              });
-          }, function (response) {
-              if (response.status > 0){
-                $scope.errorMsg = response.status + ': ' + response.data;
-              }
-          }, function (evt) {
-              files.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-          });
-        }   
-      }
-    }
 
+      document.getElementById('fileinput').addEventListener('change', function(){
+        var file = this.files[0];
+        // This code is only for demo ...
+        console.log(file);
+        $http({
+          method: 'POST',
+          url: '/api/upload',
+          timeout: 25000,
+          data: file
+        }).success(function(result){
+          $scope.uploadresult = 'valid';
+        }).error(function(result){
+          $scope.uploadresult = 'invalid';
+        });
+        // console.log("name : " + file.name);
+        // console.log("size : " + file.size);
+        // console.log("type : " + file.type);
+        // console.log("date : " + file.lastModified);
+      }, false);
+    }
 }
 
 module.exports = TrainingDataUploadDirective;
