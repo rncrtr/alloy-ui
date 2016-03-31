@@ -18,7 +18,9 @@
     "dropzone": "^4.3.0",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
-    "jsonlint": "^1.6.2"
+    "jsonlint": "^1.6.2",
+    "nodelint": "^0.6.2",
+    "unzip": "^0.1.11"
   },
   "devDependencies": {
     "body-parser": "^1.15.0",

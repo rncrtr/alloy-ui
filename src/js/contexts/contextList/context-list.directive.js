@@ -18,16 +18,17 @@ function ContextListDirective(dataService) {
         gridTableData.rest_method = 'get';
         gridTableData.rest_params = '';
         gridTableData.totalItems = 20;
-        gridTableData.fieldLabels = ['Name', 'Transformation Svc', 'Processing Svc',
-            'Daemon Factory Svc', 'Report Svc', 'Endpoint Key',
-            'Identity Key', 'Polynomial Map', 'Threshold',
-            'Expiration (ms)', 'Field List'];
+        gridTableData.fieldLabels = ['Name', 'Transform Svc', 'Processing Svc',
+            'Report Svc', 'Endpoint Key',
+            'ID Key', 'Polynomial Map', 'Threshold',
+            'Expiration', 'Field List'];
         gridTableData.hideFields = ['id'];
         gridTableData.sortType = 'id';
 
         // array of action objects label, class, url to for
         gridTableData.actions = [
-            {'label':'View','class':'btn-primary','url':'/#/contexts/:id'}
+            {'label':'View','class':'btn-primary','url':'/#/contexts/:id'},
+            {'label':'Cache','class':'btn-success','url':'/#/cache/:id'}
             //{'label':'Edit','class':'btn-success','url':'/context/:id/edit'},
             //{'label':'Delete','class':'btn-danger','url':'/context/:id/delete'}
         ];

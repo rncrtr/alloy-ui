@@ -31,10 +31,13 @@
           <td ng-repeat="(thisKey,thisValue) in thisRow" ng-show="{{viewData.hideFields.indexOf(thisKey)}}==-1">
             {{::thisValue}}
           </td>
-          <td class="text-center">
-            <button ng-id="thisRow.id" ng-repeat="thisAction in viewData.actions" class="btn btn-xs" ng-class="thisAction.class" ng-click="actionButtonClick(thisRow.id,thisAction.url)">
-              {{::thisAction.label}}
-            </button>&nbsp;
+          <td class="text-center" style="width: {{viewData.actions.length * 60}}px">
+            <span ng-repeat="thisAction in viewData.actions">
+              <button ng-id="thisRow.id" class="btn btn-xs" ng-class="thisAction.class" ng-click="actionButtonClick(thisRow.id,thisAction.url)">
+                {{::thisAction.label}}
+              </button>
+              &nbsp;
+            </span>
           </td> 
         </tr>
       </tbody>
@@ -44,7 +47,9 @@
     <div id="pagerNav" class="col-md-offset-1 col-md-10">
       <div class="row">
         <div class="col-md-offset-2 col-md-1">
-          <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1"><span class="fa fa-fw fa-chevron-left"></span></button>
+          <button class="btn btn-link pager-btn" ng-disabled="viewData.currPage == 1" ng-click="viewData.currPage = viewData.currPage - 1">
+            <span class="fa fa-fw fa-chevron-left"></span>
+          </button>
         </div>
         <div class="col-md-6 text-center">
             <!-- BEFORE CURRENT PAGE -->

@@ -21,26 +21,26 @@ function dataService($http, $q){
 
   function getMockContexts() {
     return [
-      {'id':0,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':1,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':2,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':3,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':4,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':5,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':6,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':7,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':8,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':9,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':10,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':11,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':12,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':13,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':14,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':15,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':16,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':17,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':18,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
-      {'id':19,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field4': 'daemonfactory1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':0,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':1,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':2,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':3,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':4,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':5,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':6,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':7,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':8,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':9,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':10,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':11,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':12,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':13,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':14,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':15,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':16,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':17,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':18,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
+      {'id':19,'field1':'Context 1', 'field2': 'xfersvc1', 'field3': 'prcsrvc1', 'field5': 'reportsvc1', 'field6': 'key1', 'field7': 'key1', 'field8': 'map', 'field9': '2000', 'field10': '5000', 'field11': 'list'},
     ];
   }
 
@@ -70,6 +70,7 @@ function dataService($http, $q){
       {'id': 7, 'name': 'Script #8', 'language': 'javascript', 'status': 'Rejected'},
       {'id': 8, 'name': 'Script #9', 'language': 'groovy', 'status': 'Rejected'},
     ];
+  }
 
   function getMockReports() {
     return [
@@ -115,6 +116,8 @@ function dataService($http, $q){
         return $q.when(getMockContexts());
     } else if (url.indexOf('/servers') >= 0) {
         return $q.when(getMockServers());
+    } else if (url.indexOf('/scripts') >= 0) {
+        return $q.when(getMockScripts());
     }
 
   };

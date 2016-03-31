@@ -11,11 +11,8 @@ function TrainingDataUploadDirective($http,$timeout) {
     }
 
     function link($scope, $elem, $attrs) {
-
       document.getElementById('fileinput').addEventListener('change', function(){
         var file = this.files[0];
-        // This code is only for demo ...
-        console.log(file);
         $http({
           method: 'POST',
           url: '/api/upload',
@@ -26,10 +23,6 @@ function TrainingDataUploadDirective($http,$timeout) {
         }).error(function(result){
           $scope.uploadresult = 'invalid';
         });
-        // console.log("name : " + file.name);
-        // console.log("size : " + file.size);
-        // console.log("type : " + file.type);
-        // console.log("date : " + file.lastModified);
       }, false);
     }
 }

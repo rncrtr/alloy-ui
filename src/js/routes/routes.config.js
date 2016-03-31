@@ -39,7 +39,7 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
         })
         .state('main.script-detail', {
             url: '/scripts/:id',
-            templateUrl: 'routes/templates/script-detail-template.html'
+            templateUrl: 'routes/templates/scripts-detail-template.html'
         })
         .state('main.servers', {
             url: '/servers',

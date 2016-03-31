@@ -47,6 +47,7 @@ gulp.task('copy', ['clean'], function() {
 
 gulp.task('bundle', ['clean'], function() {
     buildAppJs('./src/js/app.js', './dist/js');
+    buildPrismJs('./src/js/prism.js', './dist/js');
 });
 
 gulp.task('build', ['ng', 'css', 'img', 'bundle', 'copy']);
@@ -71,6 +72,12 @@ gulp.task('watch', ['build'], function() {
         .pipe(watch('./src/**/*.js', function(file) {
             console.log(file.path + " changed, rebuilding app.js");
             buildAppJs('./src/js/app.js', './dist/js');
+        }));
+
+    gulp.src('./src/prism.js')
+        .pipe(watch('./src/prism.js', function(file) {
+            console.log(file.path + " changed, rebuilding app.js");
+            buildPrismJs('./src/js/prism.js', './dist/js');
         }));
 
     gulp.src('./src/js/**/*.html')
@@ -111,6 +118,13 @@ function copyIndex() {
 }
 
 function buildAppJs(files, outfile) {
+    return gulp.src(files)
+        .pipe(browserify())
+        .pipe(uglify())
+        .pipe(gulp.dest(outfile));
+}
+
+function buildPrismJs(files, outfile) {
     return gulp.src(files)
         .pipe(browserify())
         .pipe(uglify())

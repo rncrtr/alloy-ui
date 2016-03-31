@@ -12,7 +12,7 @@ var routes = require('./routes'),
     helpers = require('./helpers'),
     tagsInput = require('./tagsInput');
 
-var DEPS = [routes,'templates',contexts, reports, servers,scripts,trainingDataUpload, gridTable, helpers,tagsInput];
+var DEPS = ['templates',routes,contexts,reports,servers,scripts,trainingDataUpload,gridTable,helpers,tagsInput];
 
 angular.module('app', DEPS)
        .service('dataService',require('./data.service'));

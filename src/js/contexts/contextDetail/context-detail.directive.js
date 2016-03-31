@@ -30,7 +30,7 @@ function ContextDetailDirective(dataService,$stateParams) {
             var url = '/context/'+contextid;
             var method = 'PUT';
             var params = $scope.formData;
-            console.log(serializeObj($scope.formData));
+            // console.log(serializeObj($scope.formData));
             // dataService.getRest(url, method, params).then(function(result){
             //     $scope.ctx = result;
             // });
