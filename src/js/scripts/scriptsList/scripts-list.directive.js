@@ -27,21 +27,7 @@ function ScriptsListDirective(dataService,$http) {
         ];
         $scope.scriptList = true;
         $scope.scripts = gridTableData;
-
-        document.getElementById('scriptinput').addEventListener('change', function(){
-            var file = this.files[0];
-            $http({
-                method: 'POST',
-                url: '/api/script',
-                timeout: 25000,
-                data: file
-            }).success(function(result){
-              $scope.uploadscriptresult = 'valid';
-            }).error(function(result){
-              $scope.uploadscriptresult = 'invalid';
-            });
-        }, false);
-
+      
   }
 
 }

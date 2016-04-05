@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add Script</h3>
+</div>
+
+<div class="modal-body" style="min-height: 350px;">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="file" watch-file="onFileChange" style="display:none"/>
+            <button type="button" class="btn btn-primary" ng-click="triggerSelectFile()">Choose File</button>
+            <span style="margin-left: 5px;">{{fileName}}</span>
+            <br/>
+            <small>Zip file expected with script and json unit test data</small>
+        </div>
+        <div class="col-md-6">
+            <div class="upload-result" ng-show="scriptValidated && isScriptValid">
+                <h4 class="text-success">
+                    <i class="fa fa-fw fa-2x fa-check"></i> <span style="padding-bottom: 10px;">Javascript is valid!</span>
+                </h4>
+            </div>
+            <div class="upload-result" ng-show="scriptValidated && !isScriptValid">
+                <h4 class="text-danger">
+                    <i class="fa fa-fw fa-2x fa-times"></i> <span style="padding-bottom: 10px;">Javascript not valid! Please try again.</span>
+                </h4>
+            </div>
+            <div class="upload-result" ng-show="testValidated && isTestValid">
+                <h4 class="text-success">
+                    <i class="fa fa-fw fa-2x fa-check"></i> <span style="padding-bottom: 10px;">JSON is valid!</span>
+                </h4>
+            </div>
+            <div class="upload-result" ng-show="testValidated && !isTestValid">
+                <h4 class="text-danger">
+                    <i class="fa fa-fw fa-2x fa-times"></i> <span style="padding-bottom: 10px;">JSON not valid! Please try again.</span>
+                </h4>
+            </div>
+            <div class="upload-result" ng-show="testRan && testPassed">
+                <h4 class="text-success">
+                    <i class="fa fa-fw fa-2x fa-check"></i> <span style="padding-bottom: 10px;">All tests have passed!</span>
+                </h4>
+            </div>
+            <div class="upload-result" ng-show="testRan && !testPassed">
+                <h4 class="text-danger">
+                    <i class="fa fa-fw fa-2x fa-times"></i> <span style="padding-bottom: 10px;">Tests failed!</span>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <input type="button" class="btn btn-success" value="Submit" ng-disabled="!isValid()" ng-click="submit()"/>
+</div>
+
+

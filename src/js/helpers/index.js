@@ -6,6 +6,6 @@ var DEPS = [];
 
 var helpers = angular.module(MODULE_NAME, DEPS);
 
-helpers.controller('TabsCtrl', require('./tabs.controller'));
+helpers.directive('watchFile', require('./watch-file.directive'));
 
 module.exports = MODULE_NAME;

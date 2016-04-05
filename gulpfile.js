@@ -127,7 +127,7 @@ function buildAppJs(files, outfile) {
 function buildPrismJs(files, outfile) {
     return gulp.src(files)
         .pipe(browserify())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest(outfile));
 }
 

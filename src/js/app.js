@@ -1,6 +1,7 @@
 'use strict';
 
 var angular = require('angular');
+var uiBootstrap = require('angular-ui-bootstrap');
 
 var routes = require('./routes'),
     contexts = require('./contexts'),
@@ -12,7 +13,12 @@ var routes = require('./routes'),
     helpers = require('./helpers'),
     tagsInput = require('./tagsInput');
 
-var DEPS = ['templates',routes,contexts,reports,servers,scripts,trainingDataUpload,gridTable,helpers,tagsInput];
+
+var DEPS = ['templates', uiBootstrap,
+            routes,contexts,
+            reports,servers,
+            scripts,trainingDataUpload,
+            gridTable,helpers,tagsInput];
 
 angular.module('app', DEPS)
        .service('dataService',require('./data.service'));
