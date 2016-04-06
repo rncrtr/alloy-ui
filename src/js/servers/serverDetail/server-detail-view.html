@@ -6,7 +6,14 @@
         </ul>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-6">
+        <h2>{{::srv.name || 'Server Detail'}}</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="" onclick="history.back(1)">&laquo;&nbsp;back to list</a>
+    </div>
+</div>
 <div class="data-list" ng-show="!isEdit">
     <div class="row">
         <label class="col-md-4 col-xs-12">Server Name:</label>

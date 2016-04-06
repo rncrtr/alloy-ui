@@ -1,6 +1,6 @@
 'use strict';
-ReportListController.$inject = ['$stateParams'];
-function ReportListController($stateParams) {
+ReportListDirective.$inject = ['$stateParams'];
+function ReportListDirective($stateParams) {
 
     return {
         restrict: 'E',
@@ -35,4 +35,4 @@ function ReportListController($stateParams) {
 
 }
 
-module.exports = ReportListController;
+module.exports = ReportListDirective;
