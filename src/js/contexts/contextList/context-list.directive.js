@@ -28,7 +28,7 @@ function ContextListDirective(dataService) {
         // array of action objects label, class, url to for
         gridTableData.actions = [
             {'label':'View','class':'btn-primary','url':'/#/contexts/:id'},
-            {'label':'Cache','class':'btn-success','url':'/#/cache/:id'}
+            //{'label':'Cache','class':'btn-success','url':'/#/cache/:id'}
             //{'label':'Edit','class':'btn-success','url':'/context/:id/edit'},
             //{'label':'Delete','class':'btn-danger','url':'/context/:id/delete'}
         ];
