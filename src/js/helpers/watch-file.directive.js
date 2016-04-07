@@ -16,6 +16,7 @@ function WatchFileDirective() {
         var callbackHandler = $scope.callback();
 
         $scope.$on('triggerFileUpload', function() {
+            $elem.val('');
             $elem.click();
         });
 

@@ -1,8 +1,8 @@
 'use strict';
 
-ScriptUploadModalCtrl.$inject = ['$scope', '$timeout', '$uibModalInstance'];
+ScriptUploadModalCtrl.$inject = ['$scope', '$timeout', '$uibModalInstance', 'Upload'];
 
-function ScriptUploadModalCtrl($scope, $timeout, $uibModalInstance) {
+function ScriptUploadModalCtrl($scope, $timeout, $uibModalInstance, Upload) {
 
     $scope.fileName = null;
     resetValidations();
@@ -39,19 +39,39 @@ function ScriptUploadModalCtrl($scope, $timeout, $uibModalInstance) {
 
         }, 500);
 
+        uploadfile(file);
+    }
+
+    function uploadfile(file) {
+
+        Upload.upload({
+            url: '/api/script',
+            method: "POST",
+            data: {file: file}
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+/*
 
 
-        /*var file = this.files[0];
-         $http({
-         method: 'POST',
-         url: '/api/script',
-         timeout: 25000,
-         data: file
-         }).success(function(result){
-         $scope.uploadscriptresult = 'valid';
-         }).error(function(result){
-         $scope.uploadscriptresult = 'invalid';
-         });*/
+        $http({
+            method: 'POST',
+            url: '/api/script',
+            timeout: 25000,
+            headers: {
+                "Content-Type": "application/zip"
+            },
+            data: fileData
+        }).success(function(result){
+            $scope.uploadscriptresult = 'valid';
+        }).error(function(result){
+            $scope.uploadscriptresult = 'invalid';
+        });*/
     }
 
     function resetValidations() {

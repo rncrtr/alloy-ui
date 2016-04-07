@@ -1,17 +1,23 @@
 // include dependencies
-var express    = require('express');
-var app        = express();
-var port     = process.env.port || 3001; // set our port
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var jsonlint = require('jsonlint');
-var unzip = require('unzip');
+var express         = require('express');
+var app             = express();
+var port            = process.env.port || 3001; // set our port
+var bodyParser      = require('body-parser');
+var methodOverride  = require('method-override');
+var jshint          = require('jshint');
+var jsonlint        = require('jsonlint');
+var fs              = require('fs');
+var unzip           = require('unzip2');
+var multer          = require('multer');
+var MemoryStream    = require('memory-stream');
+var Q               = require('q');
 
 // parsers
 app.use(express.static(__dirname + '/dist'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({ limit: '50mb', type: 'application/vnd.api+json' }));
+app.use(multer({ dest:"./uploads/" }).single('file'));
+
 app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.post('/api/upload',function(req,res){
@@ -25,24 +31,76 @@ app.post('/api/upload',function(req,res){
   };
 });
 
-app.post('/api/script',function(req,res){
-  var inputfile = req.body;
-  // unzip file
-  fs.createReadStream(inputfile)
+app.post('/api/script', function(req,res){
+
+    var file = req.file;
+
+    var validationPromises = [];
+
+    fs.createReadStream(file.path)
     .pipe(unzip.Parse())
     .on('entry', function (entry){
-      var fileName = entry.path;
-      var type = entry.type; // 'Directory' or 'File'
-      var size = entry.size;
-      if (fileName === "this IS the file I'm looking for") {
-        entry.pipe(fs.createWriteStream('files'));
-      } else {
-        entry.autodrain();
-      }
-    });
-  // validate each one including unit test JSON file
 
-  // run the unit test json against the js files
+        var type = entry.type; // 'Directory' or 'File'
+
+        var fileNameParts = entry.path.split('.');
+        var extension = fileNameParts[fileNameParts.length - 1];
+
+        if (type === "File" && (extension === 'js' || extension === 'json')) {
+
+            console.log('entry promise created');
+            var deferred = Q.defer();
+            validationPromises.push(deferred.promise);
+
+            var ws = new MemoryStream();
+
+            if (extension === 'js') {
+                ws.on('finish', function() {
+                    var isValid = true;
+                    jshint.JSHINT(ws.toString(), {undef: true});
+
+                    if (jshint.JSHINT.errors) {
+                        isValid = false;
+                    }
+                    deferred.resolve({fileType: 'js', valid: isValid});
+                });
+            } else if (extension === 'json') {
+                ws.on('finish', function() {
+                    var isValid = true;
+                    try {
+                        jsonlint.parse(ws.toString());
+                    } catch(err) {
+                        isValid = false;
+                    }
+                    deferred.resolve({fileType: 'json', valid: isValid});
+                });
+            }
+
+            entry.pipe(ws);
+
+        } else {
+            entry.autodrain();
+        }
+    }).on('close', function() {
+        var javascriptValid = true;
+        var jsonValid = true;
+
+        //All entries processed
+        Q.all(validationPromises).then(function(results) {
+            console.log(results);
+            for (var idx in results) {
+                var result = results[idx];
+                if (result.fileType === 'js' && !result.valid) {
+                    javascriptValid = false;
+                } else if (result.fileType === 'json' && !result.valid) {
+                    jsonValid = false;
+                }
+            }
+            res.send(JSON.stringify({js: javascriptValid, json: jsonValid}));
+        })
+
+
+    });
 
 });
 
