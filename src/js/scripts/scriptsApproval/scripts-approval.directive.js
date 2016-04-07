@@ -1,10 +1,10 @@
 'use strict';
 
-ScriptsListDirective.$inject = ['dataService','$http','$timeout'];
-function ScriptsListDirective(dataService,$http,$timeout) {
+ScriptsApprovalDirective.$inject = ['dataService','$http','$timeout'];
+function ScriptsApprovalDirective(dataService,$http,$timeout) {
   return {
     restrict: 'E',
-    templateUrl: 'scripts/scriptsList/scripts-list-view.html',
+    templateUrl: 'scripts/scriptsApproval/scripts-approval-view.html',
     scope: {},
     link: link
   }
@@ -16,7 +16,7 @@ function ScriptsListDirective(dataService,$http,$timeout) {
         gridTableData.rest_url = '/scripts';
         gridTableData.rest_method = 'get';
         gridTableData.rest_params = '';
-        gridTableData.totalItems = 10;
+        gridTableData.totalItems = 3;
         gridTableData.fieldLabels = ['Name','Language','Status'];
         gridTableData.hideFields = ['id'];
         gridTableData.sortType = 'id';
@@ -26,10 +26,10 @@ function ScriptsListDirective(dataService,$http,$timeout) {
             {'label':'View','class':'btn-primary','url':'/#/scripts/:id'}
         ];
 
-        $scope.scripts = gridTableData;
+        $scope.scriptsApproval = gridTableData;
       
   }
 
 }
 
-module.exports = ScriptsListDirective;
+module.exports = ScriptsApprovalDirective;

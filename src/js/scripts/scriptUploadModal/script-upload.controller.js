@@ -11,6 +11,7 @@ function ScriptUploadModalCtrl($scope, $timeout, $uibModalInstance, Upload) {
     $scope.onFileChange = onFileChange;
     $scope.isValid = isValid;
     $scope.submit = submit;
+    $scope.closeUploadModal = closeUploadModal;
 
     function triggerSelectFile() {
         $scope.$broadcast('triggerFileUpload');
@@ -93,6 +94,11 @@ function ScriptUploadModalCtrl($scope, $timeout, $uibModalInstance, Upload) {
     }
 
     function submit() {
+        $uibModalInstance.close();
+    }
+
+
+    function closeUploadModal(){
         $uibModalInstance.close();
     }
 

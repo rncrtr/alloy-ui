@@ -22,13 +22,14 @@ function tagsInput() {
     }
 
     function saveTag(e){
-      var typedTag = e.srcElement.innerHTML
+      // console.log(e);
+      var typedTag = e.currentTarget.innerHTML;
       typedTag = typedTag.replace(/&nbsp;/g,' ');
       typedTag = typedTag.replace(/&amp;/g,'&');
       if($scope.typedTags.indexOf(typedTag)==-1){
         $scope.typedTags.push(typedTag);
       }
-      e.srcElement.innerHTML = '';
+      e.currentTarget.innerHTML = '';
     } 
 
     $scope.removeTag = function(i){
