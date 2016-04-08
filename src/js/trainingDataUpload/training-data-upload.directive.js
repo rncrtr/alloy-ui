@@ -1,7 +1,7 @@
 'use strict';
 
-TrainingDataUploadDirective.$inject = ['$http','$timeout'];
-function TrainingDataUploadDirective($http,$timeout) {
+TrainingDataUploadDirective.$inject = ['Upload','$timeout'];
+function TrainingDataUploadDirective(Upload,$timeout) {
 
     return {
         restrict: 'E',
@@ -13,11 +13,11 @@ function TrainingDataUploadDirective($http,$timeout) {
     function link($scope, $elem, $attrs) {
       document.getElementById('fileinput').addEventListener('change', function(){
         var file = this.files[0];
-        $http({
-          method: 'POST',
-          url: '/api/upload',
-          timeout: 25000,
-          data: file
+          Upload.upload({
+              method: 'POST',
+              url: '/api/upload',
+              timeout: 25000,
+              data: {file: file}
         }).success(function(result){
           $scope.uploadresult = 'valid';
         }).error(function(result){
