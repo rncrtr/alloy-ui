@@ -32,6 +32,8 @@ app.post('/api/upload',function(req,res){
               res.send(result);
           } catch(err) {
               res.sendStatus(500);
+          } finally {
+              fs.unlink(file.path);
           }
       });
 });
@@ -39,10 +41,11 @@ app.post('/api/upload',function(req,res){
 app.post('/api/script', function(req,res){
 
     var file = req.file;
+    console.log(file);
     var uid = req.body ? req.body.uid : null;
 
     //If POST called with file upload and no UID
-    if (file && !uid) {
+    if (file && file.mimetype === "application/zip" && !uid) {
         var validationPromises = [];
 
         fs.createReadStream(file.path)
@@ -121,10 +124,10 @@ app.post('/api/script', function(req,res){
         });
     } else if (uid) {
         //Uid to send to coeus server
-        console.log('uid received: ' + uid);
         res.send('uid received: ' + uid);
+        fs.unlink('./uploads/' + uid);
     } else {
-        res.send('Invalid request');
+        res.sendStatus(400);
     }
 
 });
