@@ -41,7 +41,6 @@ app.post('/api/upload',function(req,res){
 app.post('/api/script', function(req,res){
 
     var file = req.file;
-    console.log(file);
     var uid = req.body ? req.body.uid : null;
 
     //If POST called with file upload and no UID
@@ -72,7 +71,6 @@ app.post('/api/script', function(req,res){
                             var errors = jshint.JSHINT.errors;
 
                             if (errors && errors.length > 0) {
-                                console.log(errors);
                                 isValid = false;
                             }
                             deferred.resolve({fileType: 'js', valid: isValid});
@@ -83,7 +81,6 @@ app.post('/api/script', function(req,res){
                             try {
                                 jsonlint.parse(ws.toString());
                             } catch(err) {
-                                console.log(err);
                                 isValid = false;
                             }
                             deferred.resolve({fileType: 'json', valid: isValid});
@@ -101,7 +98,6 @@ app.post('/api/script', function(req,res){
 
             //All entries processed
             Q.all(validationPromises).then(function(results) {
-                console.log(results);
                 for (var idx in results) {
                     var result = results[idx];
                     if (result.fileType === 'js' && !result.valid) {
