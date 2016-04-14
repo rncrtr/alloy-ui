@@ -1,6 +1,6 @@
 <div ng-show="viewData.totalItems > 0">
   <div class="row" ng-show="viewData.currPage >= 1">
-    <div class="col-md-offset-1 col-md-2" style="padding: 10px 0px 10px 0px;">
+    <div class="col-md-2" style="padding: 10px 0px 10px 0px;">
       Page Size:&nbsp;
       <select id="pageSizeSelect" ng-model="viewData.pageSize" ng-options="set.value as set.name for set in viewData.pageSets" ng-change="pageSizeChanged()">
       </select>
@@ -8,16 +8,19 @@
   </div>
   <div class="row" ng-show="!loader.start">
     <br />
+    {{viewData.sortType}}
+    {{viewData.sortReverse}}
+    {{resultKeys}}
     <table class="col-md-12 table-condensed table-bordered table-striped table-hover">
       <thead>
         <tr>
         <!-- repeat here -->
         <!-- | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search -->
-          <th ng-repeat="thisField in viewData.fieldLabels | orderBy:viewData.sortType:viewData.sortReverse | filter:viewData.search">
-            <a href="#" ng-click="viewData.sortType = XYZ; viewData.sortReverse = !viewData.sortReverse">
-              {{::thisField}}
-              <span ng-show="viewData.sortType == XYZ && viewData.sortReverse" class="fa fa-caret-down"></span>
-              <span ng-show="viewData.sortType == XYZ && !viewData.sortReverse" class="fa fa-caret-up"></span>
+          <th ng-repeat="thisField in viewData.fieldLabels">
+            <a href="#" ng-click="viewData.sortType = resultKeys[$index]; viewData.sortReverse = !viewData.sortReverse;">
+              {{::thisField}} {{resultKeys[$index]}}
+              <span ng-show="viewData.sortType == resultKeys[$index] && viewData.sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="viewData.sortType == resultKeys[$index] && !viewData.sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
         <!-- /repeat here -->

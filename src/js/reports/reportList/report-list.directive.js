@@ -21,7 +21,7 @@ function ReportListDirective($stateParams) {
 
         viewData.fieldLabels = ['Report Name'];
         viewData.hideFields = ['id'];
-        viewData.sortType = 'id';
+        viewData.sortType = 'name';
 
         // array of action objects label, class, url to for
         viewData.actions = [

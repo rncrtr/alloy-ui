@@ -46,8 +46,17 @@ function gridTable(dataService) {
     // call data on the service
     function getData(){
       dataService.getRest(url, method, params).then(function(result){
-        // console.log(result);
         $scope.results = result;
+        console.log(result[0]);
+        var firstobj = result[0];
+        $scope.resultKeys = Object.keys(firstobj);
+        $scope.resultKeys = $scope.resultKeys.filter(function(el){
+          if($scope.viewData.hideFields.indexOf(el) !== -1){
+            return false;
+          }
+          return true;
+        });
+        $scope.viewData.sortType = $scope.resultKeys[0];
       });
     }
 
@@ -60,7 +69,6 @@ function gridTable(dataService) {
     // requery data when the currPage changes
     $scope.$watch('viewData.currPage', (function() {
       getData();
-      // console.log($scope.viewData);
     }));
   }
 }
