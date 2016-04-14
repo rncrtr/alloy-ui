@@ -48,6 +48,10 @@ gulp.task('copy', ['clean'], function() {
 gulp.task('bundle', ['clean'], function() {
     buildAppJs('./src/js/app.js', './dist/js');
     buildPrismJs('./src/js/prism.js', './dist/js');
+    buildJs('./src/js/pdf.js', './dist/js');
+    buildJs('./src/js/pdf.worker.js', './dist/js');
+    copyViewerJS();
+    copyPdf();
 });
 
 gulp.task('build', ['ng', 'css', 'img', 'bundle', 'copy']);
@@ -117,6 +121,18 @@ function copyIndex() {
         .pipe(gulp.dest('./dist/'));
 }
 
+function copyViewerJS() {
+    return gulp.src('./src/ViewerJS/**/*')
+        .pipe(gulp.dest('./dist/ViewerJS/'));
+}
+
+
+
+function copyPdf() {
+    return gulp.src('./src/test.pdf')
+        .pipe(gulp.dest('./dist/'));
+}
+
 function buildAppJs(files, outfile) {
     return gulp.src(files)
         .pipe(browserify())
@@ -128,6 +144,12 @@ function buildPrismJs(files, outfile) {
     return gulp.src(files)
         .pipe(browserify())
         //.pipe(uglify())
+        .pipe(gulp.dest(outfile));
+}
+
+function buildJs(files, outfile) {
+    return gulp.src(files)
+        .pipe(browserify())
         .pipe(gulp.dest(outfile));
 }
 

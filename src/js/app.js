@@ -15,8 +15,7 @@ var routes = require('./routes'),
     tagsInput = require('./tagsInput');
 
 
-var DEPS = ['templates', uiBootstrap, fileUpload,
-            routes,contexts,
+var DEPS = ['templates', uiBootstrap, fileUpload,routes,contexts,
             reports,servers,
             scripts,trainingDataUpload,
             gridTable,helpers,tagsInput];

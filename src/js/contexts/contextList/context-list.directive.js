@@ -11,7 +11,6 @@ function ContextListDirective(dataService) {
     }
 
     function link($scope, $elem, $attrs) {
-
         // gridtable config
         var gridTableData = {};
         gridTableData.rest_url = '/contexts';
@@ -33,7 +32,6 @@ function ContextListDirective(dataService) {
             //{'label':'Delete','class':'btn-danger','url':'/context/:id/delete'}
         ];
         $scope.contexts = gridTableData;
-
     }
 
 }

@@ -20,6 +20,10 @@
                 <div class="col-md-7 col-xs-12">{{::ctx.reportService}}</div>
             </div>
             <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Field List:</label>
+                <div class="col-md-7 col-xs-12">{{::ctx.fieldList}}</div>
+            </div>
+            <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Endpoint Key:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.endpointKey}}</div>
             </div>
@@ -38,10 +42,6 @@
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Time to Expiration:</label>
                 <div class="col-md-7 col-xs-12">{{::ctx.expiration}}</div>
-            </div>
-            <div class="row field-group">
-                <label class="col-md-5 col-xs-12">Field List:</label>
-                <div class="col-md-7 col-xs-12">{{::ctx.fieldList}}</div>
             </div>
             <div class="row field-group">
                 <div class="col-xs-7 col-md-offset-5">
@@ -73,6 +73,12 @@
                 <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.reportService" ng-value="formData.reportService" /></div>
             </div>
             <div class="row field-group">
+                <label class="col-md-5 col-xs-12">Field List:</label>
+                <div class="col-md-7 col-xs-12">
+                    <tags-input typed-tags="formData.fieldListTags"></tags-input>
+                </div>
+            </div>
+            <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Endpoint Key:</label>
                 <div class="col-md-7 col-xs-12">
                     <tags-input typed-tags="formData.endpointKeyTags"></tags-input>
@@ -95,12 +101,6 @@
             <div class="row field-group">
                 <label class="col-md-5 col-xs-12">Time to Expiration:</label>
                 <div class="col-md-7 col-xs-12"><input type="text" class="form-control" ng-model="formData.expiration" ng-value="formData.expiration" /></div>
-            </div>
-            <div class="row field-group">
-                <label class="col-md-5 col-xs-12">Field List:</label>
-                <div class="col-md-7 col-xs-12">
-                    <tags-input typed-tags="formData.fieldListTags"></tags-input>
-                </div>
             </div>
             <div class="row field-group">
                 <div class="col-xs-7 col-md-offset-5">

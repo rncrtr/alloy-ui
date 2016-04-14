@@ -84,6 +84,10 @@ function dataService($http, $q){
     ]
   }
 
+  function getMockSingleReport() {
+    return {id: 0, name: "Report #1"};
+  }
+
   function getMockCtx() {
     return {'id':0,'contextName':'Context 1', 'transformService': 'xfersvc1', 'processingService': 'prcsrvc1', 'daemonFactoryService': 'daemonfactory1', 'reportService': 'reportsvc1', 'endpointKey': 'key1', 'identityKey': 'key1', 'polynomialMap': 'map', 'threshold': '2000', 'expiration': '5000', 'fieldList': 'list'};
   }
