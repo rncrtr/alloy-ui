@@ -1,12 +1,12 @@
 {
-  "name": "coeus-ui",
+  "name": "alloy-ui",
   "version": "1.0.0",
-  "description": "Network Analytics Tool",
+  "description": "Starter App",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ryan Carter & Cole Sobotka",
+  "author": "Ryan Carter",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.0",

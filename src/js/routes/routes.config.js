@@ -25,34 +25,6 @@ function RouteConfig($stateProvider, $urlRouterProvider) {
             url: "/contexts/:context_name",
             templateUrl: 'routes/templates/context-detail-template.html'
         })
-        .state('main.reports', {
-            url: '/reports',
-            templateUrl: 'routes/templates/reports-template.html'
-        })
-        .state('main.report-detail', {
-            url: "/contexts/:context_name/reports/:report_name",
-            templateUrl: 'routes/templates/report-detail-template.html'
-        })
-        .state('main.scripts', {
-            url: '/scripts',
-            templateUrl: 'routes/templates/scripts-template.html'
-        })
-        .state('main.script-detail', {
-            url: '/scripts/:id',
-            templateUrl: 'routes/templates/scripts-detail-template.html'
-        })
-        .state('main.servers', {
-            url: '/servers',
-            templateUrl: 'routes/templates/servers-template.html'
-        })
-        .state('main.server-detail', {
-            url: '/servers/:id',
-            templateUrl: 'routes/templates/server-detail-template.html'
-        })
-        .state('main.training-data-upload', {
-            url: '/trainingdata/:cid',
-            templateUrl: 'routes/templates/training-data-upload-template.html'
-        })
 }
 
 module.exports = RouteConfig;
